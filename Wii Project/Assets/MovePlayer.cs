@@ -15,5 +15,6 @@ public class MovePlayer : MonoBehaviour
         moveDelta = new Vector3(x, y, 0);
 
         transform.Rotate(0f, 0f, -moveDelta.x*moveSpeed, Space.World);
+        transform.Rotate(moveDelta.y * moveSpeed, 0f, 0f, Space.World);
     }
 }
