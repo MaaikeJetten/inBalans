@@ -2174,6 +2174,7 @@ GameObject:
   - component: {fileID: 1142778591}
   - component: {fileID: 1142778590}
   - component: {fileID: 1142778594}
+  - component: {fileID: 1142778595}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2280,6 +2281,19 @@ MonoBehaviour:
   startButton: {fileID: 836201225}
   trainingButton: {fileID: 207470355}
   losseButton: {fileID: 1338265587}
+--- !u!114 &1142778595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142778589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e058b22f18824d34595dd83be5503a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene1: {fileID: 1366132552}
 --- !u!1 &1158005904
 GameObject:
   m_ObjectHideFlags: 0
