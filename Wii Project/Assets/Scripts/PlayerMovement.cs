@@ -51,43 +51,34 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (transform.localEulerAngles.z > 30 && transform.localEulerAngles.z < 100)
             {
-                transform.Rotate(0f, 0f, -5f, Space.World);
+                transform.Rotate(0f, 0f, -0.1f, Space.World);
             }
             else if (transform.localEulerAngles.z < 330)
             {
-                transform.Rotate(0f, 0f, 5f, Space.World);
+                transform.Rotate(0f, 0f, 0.1f, Space.World);
             }
 
-            //Rotate limitation left/right with A & D
-            if (transform.localEulerAngles.z <= 30 || transform.localEulerAngles.z >= 330)
+            
+        }
+
+        if (y != 0)
+        {
+            //Rotate limitation front/back with W & S
+            if (transform.localEulerAngles.x <= 30 || transform.localEulerAngles.x >= 330)
             {
-                transform.Rotate(0f, 0f, -moveDirection.x, Space.World);
+                transform.Rotate(moveDirection.y, 0f, 0f, Space.Self);
             }
-            else if (transform.localEulerAngles.z > 30 && transform.localEulerAngles.z < 100)
+            else if (transform.localEulerAngles.x > 30 && transform.localEulerAngles.x < 100)
             {
-                transform.Rotate(0f, 0f, -5f, Space.World);
+                transform.Rotate(-0.1f, 0f, 0f, Space.Self);
             }
-            else if (transform.localEulerAngles.z < 330)
+            else if (transform.localEulerAngles.x < 330)
             {
-                transform.Rotate(0f, 0f, 5f, Space.World);
+                transform.Rotate(0.1f, 0f, 0f, Space.Self);
             }
         }
 
-                //Rotate limitation front/back with W & S
-        if (transform.localEulerAngles.x <= 30 || transform.localEulerAngles.x >= 330)
-        {
-            transform.Rotate(moveDirection.y, 0f, 0f, Space.Self);
-        }
-        else if (transform.localEulerAngles.x > 30 && transform.localEulerAngles.x < 100)
-        {
-            transform.Rotate(-5f, 0f, 0f, Space.Self);
-        }
-        else if (transform.localEulerAngles.x < 330)
-        {
-            transform.Rotate(5f, 0f, 0f, Space.Self);
-        }
-
-        if (x == 0)
+        if (x == 0 && y == 0)
         {
             CharacterStandStraight();
            
