@@ -36,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        Debug.Log("Horizontal = " + x);
-        Debug.Log("Vertical = " + y );
+       // Debug.Log("Horizontal = " + x);
+      //  Debug.Log("Vertical = " + y );
 
         moveDirection = new Vector3(x, y, 0);
         moveDirection *= moveSpeed;
@@ -88,24 +88,6 @@ public class PlayerMovement : MonoBehaviour
         prevY = y; 
         //Debug.Log(transform.localEulerAngles);
 
-    }
-
-    void Rotate()
-    {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        moveDirection = new Vector3(x, y, 0);
-        moveDirection *= moveSpeed;
-
-        if (x > 0)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.right), 2f * Time.deltaTime);
-        else if (x < 0)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.left), 2f * Time.deltaTime);
-        if (y > 0)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward), 2f * Time.deltaTime);
-        else if (y < 0)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.back), 2f * Time.deltaTime);
     }
 
     void CharacterStandStraight()
