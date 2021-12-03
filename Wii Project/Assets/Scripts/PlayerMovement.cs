@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +9,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 moveDirection;
 
+    private float prevX;
+    private float prevY;
+    private float timerX;
+
+    private Vector3 forwardRelativeToSurfaceNormal;//For Look Rotation
+
     //REFERENCES
 
     private CharacterController controller;
@@ -18,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-
+        prevX = 0;
+        prevY = 0; 
     }
 
     private void Update()
@@ -31,25 +36,44 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
+        Debug.Log("Horizontal = " + x);
+        Debug.Log("Vertical = " + y );
+
         moveDirection = new Vector3(x, y, 0);
         moveDirection *= moveSpeed;
 
+        if (x != 0)
+        {
+            //Rotate limitation left/right with A & D
+            if (transform.localEulerAngles.z <= 30 || transform.localEulerAngles.z >= 330)
+            {
+                transform.Rotate(0f, 0f, -moveDirection.x, Space.World);
+            }
+            else if (transform.localEulerAngles.z > 30 && transform.localEulerAngles.z < 100)
+            {
+                transform.Rotate(0f, 0f, -5f, Space.World);
+            }
+            else if (transform.localEulerAngles.z < 330)
+            {
+                transform.Rotate(0f, 0f, 5f, Space.World);
+            }
 
-        //Rotate limitation left/right with A & D
-        if (transform.localEulerAngles.z <= 30 || transform.localEulerAngles.z >= 330)
-        {
-            transform.Rotate(0f, 0f, -moveDirection.x, Space.World);
-        } 
-        else if (transform.localEulerAngles.z > 30 && transform.localEulerAngles.z < 100)
-        {
-            transform.Rotate(0f, 0f, -5f, Space.World);
-        }
-        else if (transform.localEulerAngles.z < 330)
-        {
-            transform.Rotate(0f, 0f, 5f, Space.World);
+            //Rotate limitation left/right with A & D
+            if (transform.localEulerAngles.z <= 30 || transform.localEulerAngles.z >= 330)
+            {
+                transform.Rotate(0f, 0f, -moveDirection.x, Space.World);
+            }
+            else if (transform.localEulerAngles.z > 30 && transform.localEulerAngles.z < 100)
+            {
+                transform.Rotate(0f, 0f, -5f, Space.World);
+            }
+            else if (transform.localEulerAngles.z < 330)
+            {
+                transform.Rotate(0f, 0f, 5f, Space.World);
+            }
         }
 
-        //Rotate limitation front/back with W & S
+                //Rotate limitation front/back with W & S
         if (transform.localEulerAngles.x <= 30 || transform.localEulerAngles.x >= 330)
         {
             transform.Rotate(moveDirection.y, 0f, 0f, Space.Self);
@@ -62,7 +86,15 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Rotate(5f, 0f, 0f, Space.Self);
         }
-        
+
+        if (x == 0)
+        {
+            CharacterStandStraight();
+           
+        }
+
+        prevX = x;
+        prevY = y; 
         //Debug.Log(transform.localEulerAngles);
 
     }
@@ -83,5 +115,14 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward), 2f * Time.deltaTime);
         else if (y < 0)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.back), 2f * Time.deltaTime);
+    }
+
+    void CharacterStandStraight()
+    {
+        //For Detect The Base/Surface.
+       
+            Quaternion targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2); //Rotate Character accordingly.
+        
     }
 }
