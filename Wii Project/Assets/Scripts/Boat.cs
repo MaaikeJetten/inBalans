@@ -10,17 +10,40 @@ public class Boat : MonoBehaviour
     public int duration;
     private float moveSpeed;
 
-    private void Start()
+    private string eventTrigger = "hoi";
+
+    public Popup popUp;
+
+    private Vector3 position;
+
+    public bool play;
+
+    void Start()
     {
         renderer = GetComponent<MeshRenderer>();
         size = renderer.bounds.size;
         moveSpeed = (size.z+100) / (duration);
+       
+
+        position = transform.position;
+        play = false;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        if ((size.z / 2) > (transform.position.z * -1))
-            transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
-       
+        eventTrigger = popUp.eventTrigger;
+
+        if (eventTrigger == "begin")
+        {
+            transform.position = position;
+            play = true;
+        }
+        if (play)
+        {
+            if ((size.z / 2) > (transform.position.z * -1))
+                transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
+        }
+
+        Debug.Log(eventTrigger);
     }
 }
