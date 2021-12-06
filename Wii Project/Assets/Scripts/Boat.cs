@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boat : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Boat : MonoBehaviour
     private string eventTrigger = "";
 
     public Popup popUp;
+    public Text cooldown;
+    private float cooldownTime = 3f;
 
     private Vector3 position;
 
@@ -55,6 +58,7 @@ public class Boat : MonoBehaviour
         play = true;
         moveSpeed = (size.z + 100) / (duration);
         RestartPosition();
+        Countdown();
     }
 
     public void Pause()
@@ -65,6 +69,7 @@ public class Boat : MonoBehaviour
 
     public void Doorgaan()
     {
+        Countdown();
         play = true;
         moveSpeed = (size.z + 100) / (duration);
     }
@@ -72,5 +77,11 @@ public class Boat : MonoBehaviour
     public void RestartPosition()
     {
         transform.position = position;
+    }
+
+    private void Countdown()
+    {
+        cooldownTime -= Time.deltaTime;
+        cooldown.text = cooldownTime.ToString("0");
     }
 }
