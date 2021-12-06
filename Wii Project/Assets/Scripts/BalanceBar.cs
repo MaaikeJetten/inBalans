@@ -30,7 +30,7 @@ public class BalanceBar : MonoBehaviour
     private float errorTimer;
     [SerializeField] private float timer;
 
-
+    public bool failureRestart = false;
 
     private void Start()
     {
@@ -131,6 +131,7 @@ public class BalanceBar : MonoBehaviour
 
     public void Restart()
     {
-        boat.Begin();
+        boat.RestartPosition();
+        failureRestart = true;
     }
 }

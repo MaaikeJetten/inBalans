@@ -31,12 +31,20 @@ public class Popup : MonoBehaviour
     string time;
     bool countingDown = false;
 
+    public Slider timeFill;
+
+    //public bool failRestart = failureRestart.GetComponent<BalanceBar>();
+    public BalanceBar failRestart;
+
     public string eventTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(failRestart);
         countdownTime = (timeLeftMin*60)+timeLeftSec;
+        timeFill.maxValue = countdownTime;
+        timeFill.value = countdownTime;
 
         popup.SetActive(true);
         uitleg.SetActive(true);
@@ -51,6 +59,8 @@ public class Popup : MonoBehaviour
         volgendeButton.onClick.AddListener(Back);
         restartButton.onClick.AddListener(Restart);
         volgendeButton2.onClick.AddListener(Back);
+        negerenButton.onClick.AddListener(Doorgaan);
+        opnieuwButton.onClick.AddListener(Restart);
     }
 
     // Update is called once per frame
@@ -70,6 +80,13 @@ public class Popup : MonoBehaviour
             timeLeftMinu = timeLeftMin.ToString("0");
             timeLeftSeco = timeLeftSec.ToString("00");
             countdown.text = timeLeftMinu + ":" + timeLeftSeco;
+            timeFill.value = countdownTime;
+        }
+
+        if (failRestart.failureRestart) {
+            popup.SetActive(true);
+            failure.SetActive(true);
+            countingDown = false;
         }
     }
 
@@ -93,11 +110,16 @@ public class Popup : MonoBehaviour
     void Doorgaan() {
         popup.SetActive(false);
         pause.SetActive(false);
+        failure.SetActive(false);
+        failRestart.failureRestart = false;
         eventTrigger = "doorgaan";
         countingDown = true;
     }
 
     void Restart() {
+        popup.SetActive(false);
+        failure.SetActive(false);
+        failRestart.failureRestart = false;
         timeLeftMin = 2;
         timeLeftSec = 1;
         countdownTime = (timeLeftMin*60)+timeLeftSec;
