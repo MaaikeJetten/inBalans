@@ -11,10 +11,11 @@ public class Boat : MonoBehaviour
     public int duration;
     private float moveSpeed;
 
+    public GameObject lightHouse;
+
     private string eventTrigger = "";
 
     public Popup popUp;
-    public Text cooldown;
     private float cooldownTime = 3f;
 
     private Vector3 position;
@@ -30,6 +31,8 @@ public class Boat : MonoBehaviour
 
         position = transform.position;
         play = false;
+
+        lightHouse.transform.SetParent(this.transform);
     }
 
     void Update()
@@ -49,7 +52,9 @@ public class Boat : MonoBehaviour
         if (play)
         {
             if ((size.z / 2) > (transform.position.z * -1))
+            {
                 transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
+            }
         }
     }
 
@@ -58,7 +63,7 @@ public class Boat : MonoBehaviour
         play = true;
         moveSpeed = (size.z + 100) / (duration);
         RestartPosition();
-        Countdown();
+       
     }
 
     public void Pause()
@@ -69,7 +74,7 @@ public class Boat : MonoBehaviour
 
     public void Doorgaan()
     {
-        Countdown();
+        
         play = true;
         moveSpeed = (size.z + 100) / (duration);
     }
@@ -79,9 +84,5 @@ public class Boat : MonoBehaviour
         transform.position = position;
     }
 
-    private void Countdown()
-    {
-        cooldownTime -= Time.deltaTime;
-        cooldown.text = cooldownTime.ToString("0");
-    }
+    
 }
