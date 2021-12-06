@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Popup : MonoBehaviour
 {
@@ -11,7 +12,12 @@ public class Popup : MonoBehaviour
     public GameObject success;
     public GameObject failure;
 
-    public Button begin;
+    public Button backButton;
+    public Button beginButton;
+    public Button pauseButton;
+    public Button doorgaanButton;
+    public Button volgendeButton;
+    public Button restartButton;
 
     public string eventTrigger;
 
@@ -24,7 +30,12 @@ public class Popup : MonoBehaviour
         success.SetActive(false);
         failure.SetActive(false);
 
-        begin.onClick.AddListener(BeginGame);
+        beginButton.onClick.AddListener(BeginGame);
+        backButton.onClick.AddListener(Back);
+        pauseButton.onClick.AddListener(Pause);
+        doorgaanButton.onClick.AddListener(Doorgaan);
+        volgendeButton.onClick.AddListener(Back);
+        restartButton.onClick.AddListener(Restart);
     }
 
     // Update is called once per frame
@@ -34,6 +45,26 @@ public class Popup : MonoBehaviour
 
     void BeginGame() {
         popup.SetActive(false);
+        uitleg.SetActive(false);
         eventTrigger = "begin";
+    }
+
+    void Back() {
+        SceneManager.LoadScene (sceneName:"Menu");
+    }
+
+    void Pause() {
+        popup.SetActive(true);
+        pause.SetActive(true);
+    }
+
+    void Doorgaan() {
+        popup.SetActive(false);
+        pause.SetActive(false);
+        eventTrigger = "doorgaan";
+    }
+
+    void Restart() {
+        eventTrigger = "restart";
     }
 }
