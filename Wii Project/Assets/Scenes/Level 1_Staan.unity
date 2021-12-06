@@ -2834,8 +2834,8 @@ MonoBehaviour:
   volgendeButton: {fileID: 355956393}
   restartButton: {fileID: 1530605406}
   volgendeButton2: {fileID: 321828353}
-  timeLeftMin: 0
-  timeLeftSec: 5
+  timeLeftMin: 2
+  timeLeftSec: 0
   countdown: {fileID: 1013618004}
   eventTrigger: test
 --- !u!1 &971901335
