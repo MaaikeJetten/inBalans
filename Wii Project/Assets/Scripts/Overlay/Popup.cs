@@ -18,6 +18,7 @@ public class Popup : MonoBehaviour
     public Button doorgaanButton;
     public Button volgendeButton;
     public Button restartButton;
+    public Button volgendeButton2;
 
     public int timeLeftMin = 2;
     public int timeLeftSec = 0;
@@ -26,6 +27,7 @@ public class Popup : MonoBehaviour
     public Text countdown;
     float countdownTime = 120.00f;
     string time;
+    bool countingDown = false;
 
     public string eventTrigger;
 
@@ -33,7 +35,6 @@ public class Popup : MonoBehaviour
     void Start()
     {
         countdownTime = (timeLeftMin*60)+timeLeftSec;
-        countdown.text = timeLeftMin.ToString("0") + ":" + timeLeftSec.ToString("00");
 
         popup.SetActive(true);
         uitleg.SetActive(true);
@@ -47,6 +48,7 @@ public class Popup : MonoBehaviour
         doorgaanButton.onClick.AddListener(Doorgaan);
         volgendeButton.onClick.AddListener(Back);
         restartButton.onClick.AddListener(Restart);
+        volgendeButton2.onClick.AddListener(Back);
     }
 
     // Update is called once per frame
@@ -55,8 +57,10 @@ public class Popup : MonoBehaviour
         if (countdownTime <= 0)
         {
             countdown.text = "0:00";
+            popup.SetActive(true);
+            success.SetActive(true);
         }
-        else
+        else if (countingDown)
         {
             countdownTime -= Time.deltaTime;
             timeLeftMin = (int)(countdownTime/60);
@@ -70,6 +74,7 @@ public class Popup : MonoBehaviour
     void BeginGame() {
         popup.SetActive(false);
         uitleg.SetActive(false);
+        countingDown = true;
         eventTrigger = "begin";
     }
 
@@ -80,15 +85,21 @@ public class Popup : MonoBehaviour
     void Pause() {
         popup.SetActive(true);
         pause.SetActive(true);
+        countingDown = false;
     }
 
     void Doorgaan() {
         popup.SetActive(false);
         pause.SetActive(false);
         eventTrigger = "doorgaan";
+        countingDown = true;
     }
 
     void Restart() {
+        timeLeftMin = 2;
+        timeLeftSec = 1;
+        countdownTime = (timeLeftMin*60)+timeLeftSec;
+        countingDown = true;
         eventTrigger = "restart";
     }
 }
