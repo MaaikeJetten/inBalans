@@ -11,7 +11,7 @@ public class Boat : MonoBehaviour
     public int duration;
     private float moveSpeed;
 
-    public GameObject lightHouse;
+    public GameObject[] worldObjects;
 
     private string eventTrigger = "";
 
@@ -32,7 +32,8 @@ public class Boat : MonoBehaviour
         position = transform.position;
         play = false;
 
-        lightHouse.transform.SetParent(this.transform);
+        
+        
     }
 
     void Update()
@@ -54,6 +55,12 @@ public class Boat : MonoBehaviour
             if ((size.z / 2) > (transform.position.z * -1))
             {
                 transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
+
+                for (int i = 0; i < worldObjects.Length; i++)
+                {
+                    GameObject gObject = worldObjects[i];
+                    gObject.transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
+                }
             }
         }
     }
