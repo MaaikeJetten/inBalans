@@ -217,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &13619104
 RectTransform:
   m_ObjectHideFlags: 0
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 321828353}
   - component: {fileID: 321828352}
   m_Layer: 5
-  m_Name: Volgende Button
+  m_Name: Volgende Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,7 +1387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &527525829
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1787,7 +1787,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.66, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2833,8 +2833,9 @@ MonoBehaviour:
   doorgaanButton: {fileID: 883732786}
   volgendeButton: {fileID: 355956393}
   restartButton: {fileID: 1530605406}
-  timeLeftMin: 2
-  timeLeftSec: 0
+  volgendeButton2: {fileID: 321828353}
+  timeLeftMin: 0
+  timeLeftSec: 5
   countdown: {fileID: 1013618004}
   eventTrigger: test
 --- !u!1 &971901335
@@ -3087,7 +3088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1183550749
 RectTransform:
   m_ObjectHideFlags: 0
