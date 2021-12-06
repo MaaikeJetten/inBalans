@@ -19,11 +19,22 @@ public class Popup : MonoBehaviour
     public Button volgendeButton;
     public Button restartButton;
 
+    public int timeLeftMin = 2;
+    public int timeLeftSec = 0;
+    private string timeLeftMinu = "2";
+    private string timeLeftSeco = "00";
+    public Text countdown;
+    float countdownTime = 120.00f;
+    string time;
+
     public string eventTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
+        countdownTime = (timeLeftMin*60)+timeLeftSec;
+        countdown.text = timeLeftMin.ToString("0") + ":" + timeLeftSec.ToString("00");
+
         popup.SetActive(true);
         uitleg.SetActive(true);
         pause.SetActive(false);
@@ -41,6 +52,19 @@ public class Popup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (countdownTime <= 0)
+        {
+            countdown.text = "0:00";
+        }
+        else
+        {
+            countdownTime -= Time.deltaTime;
+            timeLeftMin = (int)(countdownTime/60);
+            timeLeftSec = (int)(countdownTime-(timeLeftMin*60));
+            timeLeftMinu = timeLeftMin.ToString("0");
+            timeLeftSeco = timeLeftSec.ToString("00");
+            countdown.text = timeLeftMinu + ":" + timeLeftSeco;
+        }
     }
 
     void BeginGame() {
