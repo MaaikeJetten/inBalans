@@ -8,6 +8,7 @@ public class BalanceBar : MonoBehaviour
     public GameObject targetSection;
     public GameObject bar;
     public GameObject positionBar;
+    public Boat boat;
 
 
     private RectTransform rtBar;
@@ -25,6 +26,9 @@ public class BalanceBar : MonoBehaviour
     private float targetWidth;
 
     Color green;
+
+    private float errorTimer;
+    [SerializeField] private float timer;
 
 
 
@@ -48,6 +52,8 @@ public class BalanceBar : MonoBehaviour
         positionBar.GetComponent<Image>().material.SetColor("_Color", Color.white);
 
         green = new Color(0.4f, 0.8f, 0.6f);
+
+        errorTimer = 0;
     }
 
     private void Update()
@@ -63,14 +69,31 @@ public class BalanceBar : MonoBehaviour
         else if (rtPosition.transform.position.x - positionBarWidth/2 > startingPosition.x + (barWidth /2) - targetWidth && rtPosition.transform.position.x + positionBarWidth / 2 < startingPosition.x + (barWidth / 2) + 5)
         {
             positionBar.GetComponentInChildren<Image>().color = Color.red;
+            errorTimer++;
+            Debug.Log(errorTimer);
+
+            if (errorTimer * Time.deltaTime >= timer)
+            {
+                Restart();
+                errorTimer = 0;
+            }
         }
         else if (rtPosition.transform.position.x - positionBarWidth / 2 < startingPosition.x - (barWidth / 2) + targetWidth && rtPosition.transform.position.x - positionBarWidth / 2 > startingPosition.x - (barWidth / 2) - 5)
         {
             positionBar.GetComponentInChildren<Image>().color = Color.red;
+            errorTimer++;
+            Debug.Log(errorTimer);
+
+            if (errorTimer * Time.deltaTime >= timer)
+            {
+                Restart();
+                errorTimer = 0;
+            }
         }
         else
         {
             positionBar.GetComponentInChildren<Image>().color = Color.black;
+            errorTimer = 0;
         }
             Debug.Log(rtPosition.transform.position);
         
@@ -104,5 +127,10 @@ public class BalanceBar : MonoBehaviour
                 rtPosition.transform.Translate(new Vector3(1.3f, 0f, 0f));
 
         }
+    }
+
+    public void Restart()
+    {
+        boat.RestartPosition();
     }
 }

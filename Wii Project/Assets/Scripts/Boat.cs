@@ -35,16 +35,38 @@ public class Boat : MonoBehaviour
 
         if (eventTrigger == "begin")
         {
-            
             play = true;
         }
+
+        if (eventTrigger == "pause")
+        {
+            play = false;
+        }
+
         if (play)
         {
             if ((size.z / 2) > (transform.position.z * -1))
                 transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
         }
+    }
 
-        Debug.Log(eventTrigger);
+    public void Begin()
+    {
+        play = true;
+        moveSpeed = (size.z + 100) / (duration);
+        RestartPosition();
+    }
+
+    public void Pause()
+    {
+        play = false;
+        moveSpeed = 0;
+    }
+
+    public void Doorgaan()
+    {
+        play = true;
+        moveSpeed = (size.z + 100) / (duration);
     }
 
     public void RestartPosition()
