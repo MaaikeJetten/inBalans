@@ -2928,6 +2928,8 @@ MonoBehaviour:
   volgendeButton: {fileID: 355956393}
   restartButton: {fileID: 1530605406}
   volgendeButton2: {fileID: 321828353}
+  negerenButton: {fileID: 637948428}
+  opnieuwButton: {fileID: 2053978899}
   timeLeftMin: 2
   timeLeftSec: 0
   countdown: {fileID: 1013618004}

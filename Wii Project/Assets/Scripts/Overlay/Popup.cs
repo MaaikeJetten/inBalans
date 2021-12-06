@@ -19,6 +19,8 @@ public class Popup : MonoBehaviour
     public Button volgendeButton;
     public Button restartButton;
     public Button volgendeButton2;
+    public Button negerenButton;
+    public Button opnieuwButton;
 
     public int timeLeftMin = 2;
     public int timeLeftSec = 0;
