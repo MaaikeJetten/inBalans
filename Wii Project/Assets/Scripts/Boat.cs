@@ -10,7 +10,7 @@ public class Boat : MonoBehaviour
     public int duration;
     private float moveSpeed;
 
-    private string eventTrigger = "hoi";
+    private string eventTrigger = "";
 
     public Popup popUp;
 
@@ -35,7 +35,7 @@ public class Boat : MonoBehaviour
 
         if (eventTrigger == "begin")
         {
-            transform.position = position;
+            
             play = true;
         }
         if (play)
@@ -45,5 +45,10 @@ public class Boat : MonoBehaviour
         }
 
         Debug.Log(eventTrigger);
+    }
+
+    public void RestartPosition()
+    {
+        transform.position = position;
     }
 }
