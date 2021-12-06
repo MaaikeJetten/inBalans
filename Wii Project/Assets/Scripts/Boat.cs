@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boat : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class Boat : MonoBehaviour
     public int duration;
     private float moveSpeed;
 
+    public GameObject lightHouse;
+
     private string eventTrigger = "";
 
     public Popup popUp;
+    private float cooldownTime = 3f;
 
     private Vector3 position;
 
@@ -27,6 +31,8 @@ public class Boat : MonoBehaviour
 
         position = transform.position;
         play = false;
+
+        lightHouse.transform.SetParent(this.transform);
     }
 
     void Update()
@@ -46,7 +52,9 @@ public class Boat : MonoBehaviour
         if (play)
         {
             if ((size.z / 2) > (transform.position.z * -1))
+            {
                 transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
+            }
         }
     }
 
@@ -55,6 +63,7 @@ public class Boat : MonoBehaviour
         play = true;
         moveSpeed = (size.z + 100) / (duration);
         RestartPosition();
+       
     }
 
     public void Pause()
@@ -65,6 +74,7 @@ public class Boat : MonoBehaviour
 
     public void Doorgaan()
     {
+        
         play = true;
         moveSpeed = (size.z + 100) / (duration);
     }
@@ -73,4 +83,6 @@ public class Boat : MonoBehaviour
     {
         transform.position = position;
     }
+
+    
 }
