@@ -70,7 +70,7 @@ public class BalanceBar : MonoBehaviour
         {
             positionBar.GetComponentInChildren<Image>().color = Color.red;
             errorTimer++;
-            Debug.Log(errorTimer);
+           // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
             {
@@ -82,7 +82,7 @@ public class BalanceBar : MonoBehaviour
         {
             positionBar.GetComponentInChildren<Image>().color = Color.red;
             errorTimer++;
-            Debug.Log(errorTimer);
+           // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
             {
@@ -95,7 +95,7 @@ public class BalanceBar : MonoBehaviour
             positionBar.GetComponentInChildren<Image>().color = Color.black;
             errorTimer = 0;
         }
-            Debug.Log(rtPosition.transform.position);
+            //Debug.Log(rtPosition.transform.position);
         
     }
 
