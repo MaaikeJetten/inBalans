@@ -43,7 +43,7 @@ public class BalanceBar : MonoBehaviour
         startingPosition = rtPosition.transform.position;
         targetPosition = rtTarget.transform.position;
 
-        speed = 1f;
+        speed = 1.5f;
 
         barWidth = rtBar.sizeDelta.x;
         positionBarWidth = rtPosition.sizeDelta.x;
