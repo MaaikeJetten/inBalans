@@ -18,7 +18,8 @@ public class Boat : MonoBehaviour
     public Popup popUp;
     private float cooldownTime = 3f;
 
-    private Vector3 position;
+    private Vector3 positionStart;
+    private Vector3[] positions; 
 
     public bool play;
 
@@ -26,14 +27,19 @@ public class Boat : MonoBehaviour
     {
         renderer = GetComponent<MeshRenderer>();
         size = renderer.bounds.size;
-        moveSpeed = (size.z+100) / (duration);
-       
+        moveSpeed = (size.z + 100) / (duration);
 
-        position = transform.position;
+
+        positionStart = transform.position;
         play = false;
 
-        
-        
+        positions = new Vector3[worldObjects.Length];
+
+        for (int i = 0; i < worldObjects.Length; i++)
+        {
+            positions[i] = worldObjects[i].transform.position;
+
+        }
     }
 
     void Update()
@@ -60,17 +66,19 @@ public class Boat : MonoBehaviour
                 {
                     GameObject gObject = worldObjects[i];
                     gObject.transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
+
+                    //Debug.Log(positions[i]);
                 }
             }
         }
+        
     }
 
     public void Begin()
-    {
+    {        
         play = true;
         moveSpeed = (size.z + 100) / (duration);
         RestartPosition();
-       
     }
 
     public void Pause()
@@ -88,8 +96,13 @@ public class Boat : MonoBehaviour
 
     public void RestartPosition()
     {
-        transform.position = position;
-    }
+        transform.position = positionStart;
+         for (int i = 0; i < worldObjects.Length; i++)
+        {
+          GameObject gObject = worldObjects[i];
+          worldObjects[i].transform.position = positions[i];
+        }
 
-    
+
+    }
 }
