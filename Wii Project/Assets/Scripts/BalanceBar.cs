@@ -131,7 +131,7 @@ public class BalanceBar : MonoBehaviour
 
     public void Restart()
     {
-        boat.RestartPosition();
+        boat.Pause();
         failureRestart = true;
     }
 }
