@@ -68,7 +68,7 @@ public class BalanceBar : MonoBehaviour
         }
         else if (rtPosition.transform.position.x - positionBarWidth/2 > startingPosition.x + (barWidth /2) - targetWidth && rtPosition.transform.position.x + positionBarWidth / 2 < startingPosition.x + (barWidth / 2) + 5)
         {
-            positionBar.GetComponentInChildren<Image>().color = Color.red;
+           // positionBar.GetComponentInChildren<Image>().color = Color.red;
             errorTimer++;
            // Debug.Log(errorTimer);
 
@@ -80,7 +80,7 @@ public class BalanceBar : MonoBehaviour
         }
         else if (rtPosition.transform.position.x - positionBarWidth / 2 < startingPosition.x - (barWidth / 2) + targetWidth && rtPosition.transform.position.x - positionBarWidth / 2 > startingPosition.x - (barWidth / 2) - 5)
         {
-            positionBar.GetComponentInChildren<Image>().color = Color.red;
+           // positionBar.GetComponentInChildren<Image>().color = Color.red;
             errorTimer++;
            // Debug.Log(errorTimer);
 

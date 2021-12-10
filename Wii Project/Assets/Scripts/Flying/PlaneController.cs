@@ -31,7 +31,7 @@ public class PlaneController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
         }
-        transform.Translate(0f, 0f, forwardSpeed, Space.Self);
 
+        transform.Translate(0f, 0f, forwardSpeed, Space.Self);
     }
 }
