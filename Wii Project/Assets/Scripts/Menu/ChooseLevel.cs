@@ -6,21 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class ChooseLevel : MonoBehaviour
 {
-    public Button scene1;
+    public Button[] scene;
 
     // Start is called before the first frame update
     void Start()
     {
-        scene1.onClick.AddListener(TaskOnClick);
+        scene[0].onClick.AddListener(Load1);
+        scene[1].onClick.AddListener(Load2);
+        scene[2].onClick.AddListener(Load3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    void TaskOnClick() {
+    void Load1() {
         SceneManager.LoadScene (sceneName:"Level 1_Staan");
+    }
+    void Load2() {
+        SceneManager.LoadScene (sceneName:"Level 2_Staan");
+    }
+    void Load3() {
+        SceneManager.LoadScene (sceneName:"Level 3_Staan");
     }
 }

@@ -22,18 +22,23 @@ public class Popup : MonoBehaviour
     public Button negerenButton;
     public Button opnieuwButton;
 
+    string currentScene;
+    
     public int timeLeftMin = 2;
     public int timeLeftSec = 0;
     private string timeLeftMinu = "2";
     private string timeLeftSeco = "00";
     public Text countdown;
     float countdownTime = 120.00f;
-    string time;
+    //string time;
     bool countingDown = false;
-
     public Slider timeFill;
 
-    //public bool failRestart = failureRestart.GetComponent<BalanceBar>();
+    public float countdownBegin = 5;
+    public Slider beginFill;
+    public Slider volgendeFill;
+    public Slider opnieuwFill;
+
     public BalanceBar failRestart;
 
     public string eventTrigger;
@@ -46,6 +51,16 @@ public class Popup : MonoBehaviour
         timeFill.maxValue = countdownTime;
         timeFill.value = countdownTime;
 
+        beginFill.maxValue = countdownBegin;
+        beginFill.value = countdownBegin;
+        volgendeFill.maxValue = countdownBegin;
+        volgendeFill.value = countdownBegin;
+        opnieuwFill.maxValue = countdownBegin;
+        opnieuwFill.value = countdownBegin;
+
+        Scene scene = SceneManager.GetActiveScene();
+        currentScene = scene.name;
+
         popup.SetActive(true);
         uitleg.SetActive(true);
         pause.SetActive(false);
@@ -56,9 +71,9 @@ public class Popup : MonoBehaviour
         backButton.onClick.AddListener(Back);
         pauseButton.onClick.AddListener(Pause);
         doorgaanButton.onClick.AddListener(Doorgaan);
-        volgendeButton.onClick.AddListener(Back);
+        volgendeButton.onClick.AddListener(LoadNext);
         restartButton.onClick.AddListener(Restart);
-        volgendeButton2.onClick.AddListener(Back);
+        volgendeButton2.onClick.AddListener(LoadNext);
         negerenButton.onClick.AddListener(Doorgaan);
         opnieuwButton.onClick.AddListener(Restart);
     }
@@ -66,6 +81,14 @@ public class Popup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (uitleg.activeSelf) {
+            BeginTimer();
+        } else if (success.activeSelf) {
+            VolgendeTimer();
+        } else if (failure.activeSelf) {
+            OpnieuwTimer();
+        }
+
         if (countdownTime <= 0)
         {
             countdown.text = "0:00";
@@ -90,11 +113,39 @@ public class Popup : MonoBehaviour
         }
     }
 
+    void BeginTimer() {
+        if(countdownBegin <= 0) {
+            BeginGame();
+        } else {
+            countdownBegin -= Time.deltaTime;
+            beginFill.value = countdownBegin;
+        }
+    }
+
+    void VolgendeTimer() {
+        if(countdownBegin <= 0) {
+            LoadNext();
+        } else {
+            countdownBegin -= Time.deltaTime;
+            volgendeFill.value = countdownBegin;
+        }
+    }
+
+    void OpnieuwTimer() {
+        if(countdownBegin <= 0) {
+            Restart();
+        } else {
+            countdownBegin -= Time.deltaTime;
+            opnieuwFill.value = countdownBegin;
+        }
+    }
+
     void BeginGame() {
         popup.SetActive(false);
         uitleg.SetActive(false);
         countingDown = true;
         eventTrigger = "begin";
+        countdownBegin = 5;
     }
 
     void Back() {
@@ -116,6 +167,23 @@ public class Popup : MonoBehaviour
         countingDown = true;
     }
 
+    void LoadNext(){
+        switch(currentScene) {
+            case "Level 1_Staan":
+                SceneManager.LoadScene (sceneName:"Level 2_Staan");
+                break;
+            case "Level 2_Staan":
+                SceneManager.LoadScene (sceneName:"Level 3_Staan");
+                break;
+            case "Level 3_Staan":
+                SceneManager.LoadScene (sceneName:"Menu");
+                break;
+            default:
+                SceneManager.LoadScene (sceneName:"Menu");
+                break;
+        }
+    }
+
     void Restart() {
         popup.SetActive(false);
         failure.SetActive(false);
@@ -125,5 +193,6 @@ public class Popup : MonoBehaviour
         countdownTime = (timeLeftMin*60)+timeLeftSec;
         countingDown = true;
         eventTrigger = "restart";
+        countdownBegin = 5;
     }
 }
