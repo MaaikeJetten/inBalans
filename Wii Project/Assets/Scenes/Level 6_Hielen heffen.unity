@@ -842,6 +842,11 @@ Transform:
   m_Father: {fileID: 1646577917}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1580215799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4618067676288795143, guid: c63c623c20a6a6146b4bcc0e2c9c6f67, type: 3}
+  m_PrefabInstance: {fileID: 411040919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1646577915 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4618067678013112279, guid: c63c623c20a6a6146b4bcc0e2c9c6f67, type: 3}
@@ -861,6 +866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 0.3
   diveSpeed: 0.3
+  propellor: {fileID: 1580215799}
 --- !u!4 &1646577917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4618067678013112272, guid: c63c623c20a6a6146b4bcc0e2c9c6f67, type: 3}
