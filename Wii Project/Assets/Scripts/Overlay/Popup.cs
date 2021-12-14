@@ -30,18 +30,27 @@ public class Popup : MonoBehaviour
     private string timeLeftSeco = "00";
     public Text countdown;
     float countdownTime = 120.00f;
-    //string time;
     bool countingDown = false;
     public Slider timeFill;
 
-    public float countdownBegin = 5;
+    public string countdownBool= "true";
+    bool countDownBool;
+    public float countdownBeginMax = 5;
+    float countdownBegin;
+    public float countdownRestartMax = 5;
+    float countdownRestart;
     public Slider beginFill;
+    public GameObject beginSlider;
     public Slider volgendeFill;
+    public GameObject volgendeSlider;
     public Slider opnieuwFill;
+    public GameObject opnieuwSlider;
 
     public BalanceBar failRestart;
 
     public string eventTrigger;
+
+    public Boat boat;
 
     // Start is called before the first frame update
     void Start()
@@ -51,12 +60,15 @@ public class Popup : MonoBehaviour
         timeFill.maxValue = countdownTime;
         timeFill.value = countdownTime;
 
+        countDownBool = "true" == countdownBool;
+        countdownBegin = countdownBeginMax;
+        countdownRestart = countdownRestartMax;
         beginFill.maxValue = countdownBegin;
         beginFill.value = countdownBegin;
         volgendeFill.maxValue = countdownBegin;
         volgendeFill.value = countdownBegin;
-        opnieuwFill.maxValue = countdownBegin;
-        opnieuwFill.value = countdownBegin;
+        opnieuwFill.maxValue = countdownRestart;
+        opnieuwFill.value = countdownRestart;
 
         Scene scene = SceneManager.GetActiveScene();
         currentScene = scene.name;
@@ -81,12 +93,18 @@ public class Popup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (uitleg.activeSelf) {
-            BeginTimer();
-        } else if (success.activeSelf) {
-            VolgendeTimer();
-        } else if (failure.activeSelf) {
-            OpnieuwTimer();
+        if (countDownBool) {
+            if (uitleg.activeSelf) {
+                BeginTimer();
+            } else if (success.activeSelf) {
+                VolgendeTimer();
+            } else if (failure.activeSelf) {
+                OpnieuwTimer();
+            }
+        } else {
+            beginSlider.SetActive(false);
+            volgendeSlider.SetActive(false);
+            opnieuwSlider.SetActive(false);
         }
 
         if (countdownTime <= 0)
@@ -132,11 +150,11 @@ public class Popup : MonoBehaviour
     }
 
     void OpnieuwTimer() {
-        if(countdownBegin <= 0) {
+        if(countdownRestart <= 0) {
             Restart();
         } else {
-            countdownBegin -= Time.deltaTime;
-            opnieuwFill.value = countdownBegin;
+            countdownRestart -= Time.deltaTime;
+            opnieuwFill.value = countdownRestart;
         }
     }
 
@@ -145,7 +163,7 @@ public class Popup : MonoBehaviour
         uitleg.SetActive(false);
         countingDown = true;
         eventTrigger = "begin";
-        countdownBegin = 5;
+        countdownBegin = countdownBeginMax;
     }
 
     void Back() {
@@ -193,6 +211,7 @@ public class Popup : MonoBehaviour
         countdownTime = (timeLeftMin*60)+timeLeftSec;
         countingDown = true;
         eventTrigger = "restart";
-        countdownBegin = 5;
+        boat.Begin();
+        countdownRestart = countdownRestartMax;
     }
 }
