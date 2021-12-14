@@ -51,7 +51,7 @@ public class BalanceBar : MonoBehaviour
 
         positionBar.GetComponent<Image>().material.SetColor("_Color", Color.white);
 
-        green = new Color(0.4f, 0.8f, 0.6f);
+        green = new Color(0.012f, 0.807f, 0.643f);
 
         errorTimer = 0;
     }
@@ -92,7 +92,7 @@ public class BalanceBar : MonoBehaviour
         }
         else
         {
-            positionBar.GetComponentInChildren<Image>().color = Color.black;
+            positionBar.GetComponentInChildren<Image>().color = Color.white;
             errorTimer = 0;
         }
             //Debug.Log(rtPosition.transform.position);
