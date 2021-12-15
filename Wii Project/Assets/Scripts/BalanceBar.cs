@@ -51,7 +51,8 @@ public class BalanceBar : MonoBehaviour
 
         positionBar.GetComponent<Image>().material.SetColor("_Color", Color.white);
 
-        green = new Color(0.012f, 0.807f, 0.643f);
+        //green = new Color(0.012f, 0.807f, 0.643f);
+        green = new Color(0.157f, 0.4f, 0.431f);
 
         errorTimer = 0;
     }
@@ -63,7 +64,7 @@ public class BalanceBar : MonoBehaviour
 
         if (rtPosition.transform.position.x < targetPosition.x + (targetWidth / 2) && rtPosition.transform.position.x > targetPosition.x - (targetWidth / 2))
         {
-            positionBar.GetComponentInChildren<Image>().color = green;
+            positionBar.GetComponentInChildren<Image>().color = Color.white;
 
         }
         else if (rtPosition.transform.position.x - positionBarWidth/2 > startingPosition.x + (barWidth /2) - targetWidth && rtPosition.transform.position.x + positionBarWidth / 2 < startingPosition.x + (barWidth / 2) + 5)
@@ -92,7 +93,7 @@ public class BalanceBar : MonoBehaviour
         }
         else
         {
-            positionBar.GetComponentInChildren<Image>().color = Color.white;
+            positionBar.GetComponentInChildren<Image>().color = green;
             errorTimer = 0;
         }
             //Debug.Log(rtPosition.transform.position);
