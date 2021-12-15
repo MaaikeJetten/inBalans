@@ -10,6 +10,7 @@ public class PlaneController : MonoBehaviour
 
     private Vector3 forwardRelativeToSurfaceNormal; //For Look Rotation
 
+    public GameObject propellor;
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +34,8 @@ public class PlaneController : MonoBehaviour
         }
 
         transform.Translate(0f, 0f, forwardSpeed, Space.Self);
+
+        propellor.transform.Rotate(0f, -10f, 0f, Space.Self);
+
     }
 }
