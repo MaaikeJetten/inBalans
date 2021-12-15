@@ -6663,6 +6663,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7401261652437345473, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 3254104825041667602, guid: 3c65ff4f541783743be934bcfbee8165, type: 3}
     - target: {fileID: 7648664973983236006, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
       propertyPath: m_Name
       value: Island_test
