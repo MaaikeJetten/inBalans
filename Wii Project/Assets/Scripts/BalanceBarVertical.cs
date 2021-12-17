@@ -109,7 +109,7 @@ public class BalanceBarVertical : MonoBehaviour
         {
             if (rtPosition.transform.position.y + positionBarWidth / 2 < startingPosition.y + (barWidth / 2) && rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y - barWidth / 2)
             {
-                rtPosition.transform.Translate(new Vector3(-x * speed, 0f, 0f));
+                rtPosition.transform.Translate(new Vector3(x * speed, 0f, 0f));
             }
             else if (rtPosition.transform.position.y + positionBarWidth / 2 >= startingPosition.y + (barWidth / 2))
             {
