@@ -38,12 +38,12 @@ public class ForestTile : MonoBehaviour
         }
 
 
-        Debug.Log(size);
+        //Debug.Log(size);
         if (transform.position.z<= planePos.z - 5)
         {
            // destroyItems();
             //GameManager.instance.CreateNewTile();
-            Destroy(this.gameObject);
+          //  Destroy(this.gameObject);
         }
 
         //transform.Translate(0f, 0f, forwardSpeed, Space.Self);

@@ -16,7 +16,7 @@ public class Boat : MonoBehaviour
     private string eventTrigger = "";
 
     public Popup popUp;
-    private float cooldownTime = 3f;
+    //private float cooldownTime = 3f;
 
     private Vector3 positionStart;
     private Vector3[] positions; 

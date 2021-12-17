@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BalanceBar : MonoBehaviour
+public class BalanceBarVertical : MonoBehaviour
 {
     public GameObject targetSection;
     public GameObject bar;
     public GameObject positionBar;
-    public Boat boat;
-   // public PlaneController plane;
+    // public Boat boat;
+    public PlaneController plane;
 
 
     private RectTransform rtBar;
@@ -39,7 +39,7 @@ public class BalanceBar : MonoBehaviour
         rtPosition = positionBar.transform.GetComponent<RectTransform>();
         rtTarget = targetSection.transform.GetComponent<RectTransform>();
 
-        
+
 
         startingPosition = rtPosition.transform.position;
         targetPosition = rtTarget.transform.position;
@@ -63,16 +63,16 @@ public class BalanceBar : MonoBehaviour
         //rtPosition.transform.position = startingPosition + new Vector3(positionRef.transform.localPosition.x,0f,0f);
         MoveBar();
 
-        if (rtPosition.transform.position.x < targetPosition.x + (targetWidth / 2) && rtPosition.transform.position.x > targetPosition.x - (targetWidth / 2))
+        if (rtPosition.transform.position.y < targetPosition.y + (targetWidth / 2) && rtPosition.transform.position.y > targetPosition.y - (targetWidth / 2))
         {
             positionBar.GetComponentInChildren<Image>().color = Color.white;
 
         }
-        else if (rtPosition.transform.position.x - positionBarWidth/2 > startingPosition.x + (barWidth /2) - targetWidth && rtPosition.transform.position.x + positionBarWidth / 2 < startingPosition.x + (barWidth / 2) + 5)
+        else if (rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y + (barWidth / 2) - targetWidth && rtPosition.transform.position.y + positionBarWidth / 2 < startingPosition.y + (barWidth / 2) + 5)
         {
-           // positionBar.GetComponentInChildren<Image>().color = Color.red;
+            // positionBar.GetComponentInChildren<Image>().color = Color.red;
             errorTimer++;
-           // Debug.Log(errorTimer);
+            // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
             {
@@ -80,11 +80,11 @@ public class BalanceBar : MonoBehaviour
                 errorTimer = 0;
             }
         }
-        else if (rtPosition.transform.position.x - positionBarWidth / 2 < startingPosition.x - (barWidth / 2) + targetWidth && rtPosition.transform.position.x - positionBarWidth / 2 > startingPosition.x - (barWidth / 2) - 5)
+        else if (rtPosition.transform.position.y - positionBarWidth / 2 < startingPosition.y - (barWidth / 2) + targetWidth && rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y - (barWidth / 2) - 5)
         {
-           // positionBar.GetComponentInChildren<Image>().color = Color.red;
+            // positionBar.GetComponentInChildren<Image>().color = Color.red;
             errorTimer++;
-           // Debug.Log(errorTimer);
+            // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
             {
@@ -97,35 +97,35 @@ public class BalanceBar : MonoBehaviour
             positionBar.GetComponentInChildren<Image>().color = green;
             errorTimer = 0;
         }
-            //Debug.Log(rtPosition.transform.position);
-        
+        //Debug.Log(rtPosition.transform.position);
+
     }
 
     private void MoveBar()
     {
-        float x = Input.GetAxis("Horizontal");
+        float x = Input.GetAxis("Vertical");
 
         if (x != 0)
         {
-            if (rtPosition.transform.position.x + positionBarWidth / 2 < startingPosition.x + (barWidth / 2) && rtPosition.transform.position.x - positionBarWidth / 2 > startingPosition.x - barWidth / 2)
+            if (rtPosition.transform.position.y + positionBarWidth / 2 < startingPosition.y + (barWidth / 2) && rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y - barWidth / 2)
             {
-                rtPosition.transform.Translate(new Vector3(x*speed, 0f, 0f));
+                rtPosition.transform.Translate(new Vector3(-x * speed, 0f, 0f));
             }
-            else if (rtPosition.transform.position.x + positionBarWidth / 2 >= startingPosition.x + (barWidth / 2))
+            else if (rtPosition.transform.position.y + positionBarWidth / 2 >= startingPosition.y + (barWidth / 2))
             {
-                rtPosition.transform.Translate(new Vector3(-.1f, 0f, 0f));
+                rtPosition.transform.Translate(new Vector3(-.001f, 0f, 0f));
             }
-            else if (rtPosition.transform.position.x - positionBarWidth / 2 <= startingPosition.x - barWidth / 2)
+            else if (rtPosition.transform.position.y - positionBarWidth / 2 <= startingPosition.y - barWidth / 2)
             {
-                rtPosition.transform.Translate(new Vector3(.1f, 0f, 0f));
+                rtPosition.transform.Translate(new Vector3(.001f, 0f, 0f));
             }
         }
 
         if (x == 0)
         {
-            if (rtPosition.transform.position.x > startingPosition.x)
+            if (rtPosition.transform.position.y < startingPosition.y)
                 rtPosition.transform.Translate(new Vector3(-1.3f*2, 0f, 0f));
-            if (rtPosition.transform.position.x < startingPosition.x)
+            if (rtPosition.transform.position.y > startingPosition.y)
                 rtPosition.transform.Translate(new Vector3(1.3f*2, 0f, 0f));
 
         }
@@ -133,7 +133,7 @@ public class BalanceBar : MonoBehaviour
 
     public void Restart()
     {
-        boat.Pause();
+        plane.Pause();
         failureRestart = true;
     }
 }

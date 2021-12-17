@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
       //  Debug.Log("Vertical = " + y );
 
         moveDirection = new Vector3(x, y, 0);
-        moveDirection *= moveSpeed;
+        moveDirection *= moveSpeed * 1.5f;
 
         if (x != 0)
         {

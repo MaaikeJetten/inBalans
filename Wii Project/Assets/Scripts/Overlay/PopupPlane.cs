@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Popup : MonoBehaviour
+public class PopupPlane : MonoBehaviour
 {
     public GameObject popup;
     public GameObject uitleg;
@@ -23,7 +23,7 @@ public class Popup : MonoBehaviour
     public Button opnieuwButton;
 
     string currentScene;
-    
+
     public int timeLeftMin = 2;
     public int timeLeftSec = 0;
     private string timeLeftMinu = "2";
@@ -33,7 +33,7 @@ public class Popup : MonoBehaviour
     bool countingDown = false;
     public Slider timeFill;
 
-    public string countdownBool= "true";
+    public string countdownBool = "true";
     bool countDownBool;
     public float countdownBeginMax = 5;
     float countdownBegin;
@@ -46,17 +46,17 @@ public class Popup : MonoBehaviour
     public Slider opnieuwFill;
     public GameObject opnieuwSlider;
 
-    public BalanceBar failRestart;
+    public BalanceBarVertical failRestart;
 
     public string eventTrigger;
 
-    public Boat boat;
+    public PlaneController plane;
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log(failRestart);
-        countdownTime = (timeLeftMin*60)+timeLeftSec;
+        countdownTime = (timeLeftMin * 60) + timeLeftSec;
         timeFill.maxValue = countdownTime;
         timeFill.value = countdownTime;
 
@@ -93,15 +93,23 @@ public class Popup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countDownBool) {
-            if (uitleg.activeSelf) {
+        if (countDownBool)
+        {
+            if (uitleg.activeSelf)
+            {
                 BeginTimer();
-            } else if (success.activeSelf) {
+            }
+            else if (success.activeSelf)
+            {
                 VolgendeTimer();
-            } else if (failure.activeSelf) {
+            }
+            else if (failure.activeSelf)
+            {
                 OpnieuwTimer();
             }
-        } else {
+        }
+        else
+        {
             beginSlider.SetActive(false);
             volgendeSlider.SetActive(false);
             opnieuwSlider.SetActive(false);
@@ -116,67 +124,86 @@ public class Popup : MonoBehaviour
         else if (countingDown)
         {
             countdownTime -= Time.deltaTime;
-            timeLeftMin = (int)(countdownTime/60);
-            timeLeftSec = (int)(countdownTime-(timeLeftMin*60));
+            timeLeftMin = (int)(countdownTime / 60);
+            timeLeftSec = (int)(countdownTime - (timeLeftMin * 60));
             timeLeftMinu = timeLeftMin.ToString("0");
             timeLeftSeco = timeLeftSec.ToString("00");
             countdown.text = timeLeftMinu + ":" + timeLeftSeco;
             timeFill.value = countdownTime;
         }
 
-        if (failRestart.failureRestart) {
+        if (failRestart.failureRestart)
+        {
             popup.SetActive(true);
             failure.SetActive(true);
             countingDown = false;
         }
     }
 
-    void BeginTimer() {
-        if(countdownBegin <= 0) {
+    void BeginTimer()
+    {
+        if (countdownBegin <= 0)
+        {
             BeginGame();
-        } else {
+        }
+        else
+        {
             countdownBegin -= Time.deltaTime;
             beginFill.value = countdownBegin;
         }
     }
 
-    void VolgendeTimer() {
-        if(countdownBegin <= 0) {
+    void VolgendeTimer()
+    {
+        if (countdownBegin <= 0)
+        {
             LoadNext();
-        } else {
+        }
+        else
+        {
             countdownBegin -= Time.deltaTime;
             volgendeFill.value = countdownBegin;
         }
     }
 
-    void OpnieuwTimer() {
-        if(countdownRestart <= 0) {
+    void OpnieuwTimer()
+    {
+        if (countdownRestart <= 0)
+        {
             Restart();
-        } else {
+        }
+        else
+        {
             countdownRestart -= Time.deltaTime;
             opnieuwFill.value = countdownRestart;
         }
     }
 
-    void BeginGame() {
+    void BeginGame()
+    {
         popup.SetActive(false);
         uitleg.SetActive(false);
         countingDown = true;
         eventTrigger = "begin";
         countdownBegin = countdownBeginMax;
+        //plane.Begin();
     }
 
-    void Back() {
-        SceneManager.LoadScene (sceneName:"Menu");
+    void Back()
+    {
+        SceneManager.LoadScene(sceneName: "Menu");
     }
 
-    void Pause() {
+    void Pause()
+    {
         popup.SetActive(true);
         pause.SetActive(true);
         countingDown = false;
+        eventTrigger = "pause";
     }
 
-    void Doorgaan() {
+    void Doorgaan()
+    {
         popup.SetActive(false);
         pause.SetActive(false);
         failure.SetActive(false);
@@ -185,13 +212,15 @@ public class Popup : MonoBehaviour
         countingDown = true;
     }
 
-    void LoadNext(){
-        switch(currentScene) {
+    void LoadNext()
+    {
+        switch (currentScene)
+        {
             case "Level 1_Staan":
-                SceneManager.LoadScene (sceneName:"Level 2_Staan");
+                SceneManager.LoadScene(sceneName: "Level 2_Staan");
                 break;
             case "Level 2_Staan":
-                SceneManager.LoadScene (sceneName:"Level 3_Staan");
+                SceneManager.LoadScene(sceneName: "Level 3_Staan");
                 break;
             case "Level 3_Staan":
                 SceneManager.LoadScene(sceneName: "Level 6_Hielen heffen");
@@ -200,21 +229,22 @@ public class Popup : MonoBehaviour
                 SceneManager.LoadScene(sceneName: "Menu");
                 break;
             default:
-                SceneManager.LoadScene (sceneName:"Menu");
+                SceneManager.LoadScene(sceneName: "Menu");
                 break;
         }
     }
 
-    void Restart() {
+    void Restart()
+    {
         popup.SetActive(false);
         failure.SetActive(false);
         failRestart.failureRestart = false;
         timeLeftMin = 2;
         timeLeftSec = 1;
-        countdownTime = (timeLeftMin*60)+timeLeftSec;
+        countdownTime = (timeLeftMin * 60) + timeLeftSec;
         countingDown = true;
         eventTrigger = "restart";
-        boat.Begin();
+        plane.Begin();
         countdownRestart = countdownRestartMax;
     }
 }
