@@ -448,72 +448,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &208290372
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 208290374}
-  - component: {fileID: 208290373}
-  m_Layer: 0
-  m_Name: Video Player Standing
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!328 &208290373
-VideoPlayer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208290372}
-  m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7499df808974ddc4193aa14ed0d318dc, type: 3}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 14fbe523137bcb24ba91b86234eb017d, type: 2}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: _MainTex
-  m_RenderMode: 2
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 1
-  m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
-  m_Looping: 1
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
-  m_VideoShaders: []
---- !u!4 &208290374
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208290372}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 954.1459, y: 536.158, z: -27.150928}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &217296765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1480,9 +1414,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'In balans
+  m_Text: 'Om de beurt hielen en tenen heffen
 
-    Handen gesteund'
+    Handen licht gesteund'
 --- !u!222 &480425760
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3736,8 +3670,8 @@ RectTransform:
   m_Father: {fileID: 274258279}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.449, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4367,9 +4301,9 @@ MonoBehaviour:
   timeLeftSec: 0
   countdown: {fileID: 135009924}
   timeFill: {fileID: 1297083239}
-  countdownBool: true
+  countdownBool: f
   countdownBeginMax: 10
-  countdownRestartMax: 5
+  countdownRestartMax: 10
   beginFill: {fileID: 1688939782}
   beginSlider: {fileID: 1688939780}
   volgendeFill: {fileID: 247542642}
@@ -4492,9 +4426,9 @@ MonoBehaviour:
   timeLeftSec: 0
   countdown: {fileID: 135009924}
   timeFill: {fileID: 1297083239}
-  countdownBool: true
+  countdownBool: f
   countdownBeginMax: 10
-  countdownRestartMax: 5
+  countdownRestartMax: 10
   beginFill: {fileID: 1688939782}
   beginSlider: {fileID: 1688939780}
   volgendeFill: {fileID: 247542642}
@@ -4516,7 +4450,7 @@ GameObject:
   - component: {fileID: 1265682482}
   - component: {fileID: 1265682481}
   m_Layer: 5
-  m_Name: Standing video
+  m_Name: Hakken tenen video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4561,7 +4495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 14fbe523137bcb24ba91b86234eb017d, type: 2}
+  m_Texture: {fileID: 8400000, guid: 0d46e514d161c34458d87f794ce51cf4, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4867,9 +4801,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'In balans
+  m_Text: 'Om de beurt hielen en tenen heffen
 
-    Handen gesteund'
+    Handen licht gesteund'
 --- !u!222 &1352895777
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4951,6 +4885,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 340b088a7615ee94fab2c8efa69f5b8a, type: 3}
+--- !u!1 &1398164151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1398164153}
+  - component: {fileID: 1398164152}
+  m_Layer: 0
+  m_Name: Video Player hakken tenen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &1398164152
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398164151}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 3ccda8a3df2801a478fef181c0a8b28f, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 0d46e514d161c34458d87f794ce51cf4, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &1398164153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398164151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 892.68304, y: 425.57095, z: -29.894367}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1403011113
 GameObject:
   m_ObjectHideFlags: 0
@@ -5095,7 +5095,7 @@ GameObject:
   - component: {fileID: 1475978563}
   - component: {fileID: 1475978562}
   m_Layer: 5
-  m_Name: Standing video
+  m_Name: Hakken tenen video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5140,7 +5140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 14fbe523137bcb24ba91b86234eb017d, type: 2}
+  m_Texture: {fileID: 8400000, guid: 0d46e514d161c34458d87f794ce51cf4, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5167,7 +5167,7 @@ GameObject:
   - component: {fileID: 1478452530}
   - component: {fileID: 1478452529}
   m_Layer: 5
-  m_Name: Standing video
+  m_Name: Hakken tenen video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5212,7 +5212,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 14fbe523137bcb24ba91b86234eb017d, type: 2}
+  m_Texture: {fileID: 8400000, guid: 0d46e514d161c34458d87f794ce51cf4, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5327,9 +5327,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'In balans
+  m_Text: 'Om de beurt hielen en tenen heffen
 
-    Handen gesteund'
+    Handen licht gesteund'
 --- !u!222 &1555597736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6649,7 +6649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1952289647
 RectTransform:
   m_ObjectHideFlags: 0

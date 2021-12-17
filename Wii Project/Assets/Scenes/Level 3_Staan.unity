@@ -173,9 +173,9 @@ MonoBehaviour:
   timeLeftSec: 0
   countdown: {fileID: 359051628}
   timeFill: {fileID: 196422348}
-  countdownBool: true
+  countdownBool: f
   countdownBeginMax: 10
-  countdownRestartMax: 5
+  countdownRestartMax: 10
   beginFill: {fileID: 1169416842}
   beginSlider: {fileID: 1169416840}
   volgendeFill: {fileID: 419828421}

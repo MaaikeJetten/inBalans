@@ -62,6 +62,7 @@ public class PlaneController : MonoBehaviour
             {
                 popUp.failRestart.failureRestart = true;
                 Pause();
+                play = false;
             }
 
 
