@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlaneController : MonoBehaviour
 {
     public float forwardSpeed;
-    [SerializeField] private float diveSpeed;
+    [SerializeField] private float diveSpeed; 
     private float diveInput;
     private Vector3 startPos;
     public bool play;
@@ -13,14 +13,26 @@ public class PlaneController : MonoBehaviour
     public PopupPlane popUp;
 
     private Vector3 forwardRelativeToSurfaceNormal; //For Look Rotation
+    private Quaternion targetRotation;
 
     public GameObject propellor;
+
+    public GameObject[] rings;
+    private Vector3[] ringPos;
+    private Vector3 ringWidth;
+
 
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
         play = false;
+
+        for(int i = 0; i < rings.Length; i++)
+        {
+            ringPos[i] = rings[i].transform.position;
+            ringWidth = rings[i].GetComponent<MeshRenderer>().bounds.size;
+        }
     }
 
     // Update is called once per frame
@@ -42,19 +54,34 @@ public class PlaneController : MonoBehaviour
         if (play)
         {
 
-            diveInput = Input.GetAxisRaw("Vertical") * diveSpeed;
+            diveInput = Input.GetAxisRaw("Vertical");
+            // Vector3 startPosition = transform.position;
+            //targetHigh = new Vector3(0f, 65, transform.position.z);
 
-            if (diveInput != 0)
+            Debug.Log(diveInput);
+
+
+            if (diveInput == 0)
             {
-                transform.Rotate(diveInput, 0f, 0f, Space.Self);
+                targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+
             }
-            else if (diveInput == 0)
+            //Rising
+           else if (diveInput <= -0.7)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+                targetRotation = Quaternion.Euler(-45, 0, 0);
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
             }
+            //Diving
+            else if (diveInput >= 0.7)
+            {
+                targetRotation = Quaternion.Euler(45, 0, 0);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+            }
+            
+            transform.Translate(0f, 0f, forwardSpeed, Space.Self); 
 
-            transform.Translate(0f, 0f, forwardSpeed, Space.Self);
 
             propellor.transform.Rotate(0f, -10f, 0f, Space.Self);
 
@@ -70,11 +97,13 @@ public class PlaneController : MonoBehaviour
 
     }
 
+   
+
     public void Begin()
     {
         play = true;
         RestartPosition();
-        
+
     }
 
     public void Pause()
@@ -94,4 +123,5 @@ public class PlaneController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.0f);
 
     }
+
 }

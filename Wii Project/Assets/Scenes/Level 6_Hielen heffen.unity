@@ -5672,16 +5672,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02e4c90b367f0548aaa8178b0a8e4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 0.45
-  diveSpeed: 0.45
+  forwardSpeed: 0.3
+  diveSpeed: 100
   play: 0
   popUp: {fileID: 1248115596}
   propellor: {fileID: 1580215799}
+  rings: []
 --- !u!4 &1646577917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4618067678013112272, guid: c63c623c20a6a6146b4bcc0e2c9c6f67, type: 3}
   m_PrefabInstance: {fileID: 411040919}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1646577918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646577915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.59, y: 8.43, z: 11.62}
+  m_Center: {x: 0, y: 3.58, z: -1.46}
 --- !u!1 &1675903121
 GameObject:
   m_ObjectHideFlags: 0
