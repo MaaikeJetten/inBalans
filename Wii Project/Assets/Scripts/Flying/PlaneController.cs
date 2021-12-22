@@ -18,9 +18,8 @@ public class PlaneController : MonoBehaviour
     public GameObject propellor;
 
     public GameObject[] rings;
-    private Vector3[] ringPos;
-    private Vector3 ringWidth;
-
+    public int lives;
+    private bool looseLife;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +27,8 @@ public class PlaneController : MonoBehaviour
         startPos = transform.position;
         play = false;
 
-        for(int i = 0; i < rings.Length; i++)
-        {
-            ringPos[i] = rings[i].transform.position;
-            ringWidth = rings[i].GetComponent<MeshRenderer>().bounds.size;
-        }
+        lives = 3;
+        looseLife = true;
     }
 
     // Update is called once per frame
@@ -53,17 +49,17 @@ public class PlaneController : MonoBehaviour
 
         if (play)
         {
-
+            
             diveInput = Input.GetAxisRaw("Vertical");
             // Vector3 startPosition = transform.position;
             //targetHigh = new Vector3(0f, 65, transform.position.z);
 
-            Debug.Log(diveInput);
+            //Debug.Log(diveInput);
 
 
             if (diveInput == 0)
             {
-                targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+               // targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
 
             }
@@ -80,12 +76,41 @@ public class PlaneController : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
             }
             
-            transform.Translate(0f, 0f, forwardSpeed, Space.Self); 
+            transform.Translate(0f, 0f, forwardSpeed, Space.Self);
+
+            foreach (GameObject ring in rings)
+            {
+                float distanceZ = ring.transform.position.z - transform.position.z;
+                float distanceY = ring.transform.position.y - transform.position.y;
+                //Check if plane close to ring
+                if (distanceZ <= 5 && distanceZ >= -5)
+                {
+                    //Debug.Log(ring + "close by");
+                    if (distanceY <= ring.GetComponent<MeshRenderer>().bounds.size.x / 2 + 5 && distanceY >= -ring.GetComponent<MeshRenderer>().bounds.size.x / 2)
+                    {
+                        //Debug.Log("hit");
+                    }
+                    else if (distanceY > ring.GetComponent<MeshRenderer>().bounds.size.x / 2 + 5 || distanceY < -ring.GetComponent<MeshRenderer>().bounds.size.x / 2)
+                    {
+                        //Debug.Log("miss");
+                        if (looseLife)
+                        {
+                            looseLife = false;
+                            lives--;
+                            Debug.Log(lives);
+                        }
+
+                    }
+                }
+                else if (distanceZ < -6 && distanceZ > -10) looseLife = true;
+
+               
+            }
 
 
             propellor.transform.Rotate(0f, -10f, 0f, Space.Self);
 
-            if (transform.position.y <= 0 || transform.position.y >= 120)
+            if (transform.position.y <= 0 || transform.position.y >= 120 || lives == 0)
             {
                 popUp.failRestart.failureRestart = true;
                 Pause();
@@ -102,6 +127,7 @@ public class PlaneController : MonoBehaviour
     public void Begin()
     {
         play = true;
+        lives = 3;
         RestartPosition();
 
     }
@@ -124,4 +150,5 @@ public class PlaneController : MonoBehaviour
 
     }
 
+  
 }
