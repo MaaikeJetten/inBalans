@@ -21,6 +21,8 @@ public class PlaneController : MonoBehaviour
     public GameObject[] rings;
     public int lives;
     private bool looseLife;
+    public bool high;
+    public bool low;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +88,18 @@ public class PlaneController : MonoBehaviour
             {
                 float distanceZ = ring.transform.position.z - transform.position.z;
                 float distanceY = ring.transform.position.y - transform.position.y;
+
+                if (distanceZ <= 200 & distanceZ >= -5)
+                {
+                    //Check if high or low
+                    if (ring.transform.position.y > startPos.y + 5) {high = true; low = false; }
+                    else if (ring.transform.position.y < startPos.y - 5) { high = false; low = true; }
+                    else { high = false; low = false; }
+
+                    Debug.Log("high = " + high + "    low = " + low);
+
+                }
+
                 //Check if plane close to ring
                 if (distanceZ <= 5 && distanceZ >= -5)
                 {

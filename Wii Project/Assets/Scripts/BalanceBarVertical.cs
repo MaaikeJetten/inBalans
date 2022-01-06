@@ -61,6 +61,7 @@ public class BalanceBarVertical : MonoBehaviour
     private void Update()
     {
         //rtPosition.transform.position = startingPosition + new Vector3(positionRef.transform.localPosition.x,0f,0f);
+        CheckTarget();
         MoveBar();
 
         if (rtPosition.transform.position.y < targetPosition.y + (targetWidth / 2) && rtPosition.transform.position.y > targetPosition.y - (targetWidth / 2))
@@ -128,6 +129,22 @@ public class BalanceBarVertical : MonoBehaviour
             if (rtPosition.transform.position.y > startingPosition.y)
                 rtPosition.transform.Translate(new Vector3(1.3f*2, 0f, 0f));
 
+        }
+    }
+
+    private void CheckTarget()
+    {
+        if (plane.high && !plane.low)
+        {
+            targetPosition.y = 40;
+        } 
+        else if (!plane.high && plane.low)
+        {
+            targetPosition.y = -40;
+        }
+        else if (!plane.high && !plane.low)
+        {
+            targetPosition.y = 0;
         }
     }
 
