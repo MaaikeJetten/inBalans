@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlaneController : MonoBehaviour
 {
     public float forwardSpeed;
+    private float speed;
     [SerializeField] private float diveSpeed; 
     private float diveInput;
     private Vector3 startPos;
@@ -26,6 +27,7 @@ public class PlaneController : MonoBehaviour
     {
         startPos = transform.position;
         play = false;
+        speed = 0;
 
         lives = 3;
         looseLife = true;
@@ -39,11 +41,13 @@ public class PlaneController : MonoBehaviour
         if (eventTrigger == "begin")
         {
             play = true;
+            speed = forwardSpeed;
         }
 
         if (eventTrigger == "pause")
         {
             play = false;
+            speed = 0;
         }
 
 
@@ -76,7 +80,7 @@ public class PlaneController : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
             }
             
-            transform.Translate(0f, 0f, forwardSpeed, Space.Self);
+            transform.Translate(0f, 0f, speed, Space.Self);
 
             foreach (GameObject ring in rings)
             {
@@ -127,6 +131,7 @@ public class PlaneController : MonoBehaviour
     public void Begin()
     {
         play = true;
+        speed = forwardSpeed;
         lives = 3;
         RestartPosition();
 
@@ -135,11 +140,13 @@ public class PlaneController : MonoBehaviour
     public void Pause()
     {
         play = false;
+        speed = 0;
     }
 
     public void Doorgaan()
     {
         play = true;
+        speed = forwardSpeed;
     }
 
     public void RestartPosition()
