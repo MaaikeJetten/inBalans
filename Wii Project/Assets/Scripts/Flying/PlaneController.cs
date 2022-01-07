@@ -40,17 +40,6 @@ public class PlaneController : MonoBehaviour
     {
         eventTrigger = popUp.eventTrigger;
 
-        if (eventTrigger == "begin")
-        {
-            play = true;
-            speed = forwardSpeed;
-        }
-
-        if (eventTrigger == "pause")
-        {
-            play = false;
-            speed = 0;
-        }
 
 
         if (play)
@@ -65,7 +54,7 @@ public class PlaneController : MonoBehaviour
 
             if (diveInput == 0)
             {
-               // targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+                targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
 
             }
@@ -128,11 +117,12 @@ public class PlaneController : MonoBehaviour
 
             propellor.transform.Rotate(0f, -10f, 0f, Space.Self);
 
-            if (transform.position.y <= 0 || transform.position.y >= 120 || lives == 0)
+            if (transform.position.y <= 10 || transform.position.y >= 120 || lives == 0)
             {
                 popUp.failRestart.failureRestart = true;
+                speed = 0;
                 Pause();
-                play = false;
+                //play = false;
             }
 
 
@@ -165,9 +155,11 @@ public class PlaneController : MonoBehaviour
 
     public void RestartPosition()
     {
-        transform.position = startPos;
         Quaternion targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.0f);
+        transform.position = startPos;
+        diveInput = 0;
+        
 
     }
 
