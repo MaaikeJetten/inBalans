@@ -12,7 +12,7 @@ public class PlaneController : MonoBehaviour
     private float diveInput;
     private float mappedHeight;
     private Vector3 startPos;
-    public bool play;
+    [HideInInspector] public bool play;
     private string eventTrigger = "";
     public PopupPlane popUp;
 
@@ -23,10 +23,10 @@ public class PlaneController : MonoBehaviour
 
     public RingGeneration ringG;
     private GameObject[] rings;
-    public int lives;
+    [HideInInspector] public int lives;
     private bool looseLife;
-    public bool high;
-    public bool low;
+    [HideInInspector] public bool high;
+    [HideInInspector] public bool low;
 
     // Start is called before the first frame update
     void Start()
@@ -123,7 +123,7 @@ public class PlaneController : MonoBehaviour
 
                     }
                 }
-                else if (distanceZ < -6 && distanceZ > -10) looseLife = true;
+                else if (distanceZ < -10 && distanceZ > -20) looseLife = true;
 
                
             }

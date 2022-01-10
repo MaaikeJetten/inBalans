@@ -120,6 +120,7 @@ public class PopupPlane : MonoBehaviour
             countdown.text = "0:00";
             popup.SetActive(true);
             success.SetActive(true);
+            plane.Pause();
         }
         else if (countingDown)
         {
