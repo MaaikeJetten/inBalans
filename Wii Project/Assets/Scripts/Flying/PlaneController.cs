@@ -6,10 +6,11 @@ public class PlaneController : MonoBehaviour
 {
     public float forwardSpeed;
     private float speed;
-    [SerializeField] private float diveSpeed;
-    [SerializeField] private float lowRing;
-    [SerializeField] private float highRing;
+    //[SerializeField] private float diveSpeed;
+    private float lowRing;
+    private float highRing;
     private float diveInput;
+    private float mappedHeight;
     private Vector3 startPos;
     public bool play;
     private string eventTrigger = "";
@@ -20,7 +21,8 @@ public class PlaneController : MonoBehaviour
 
     public GameObject propellor;
 
-    public GameObject[] rings;
+    public RingGeneration ringG;
+    private GameObject[] rings;
     public int lives;
     private bool looseLife;
     public bool high;
@@ -29,19 +31,23 @@ public class PlaneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
+        startPos = new Vector3(transform.position.x, ringG.ringMiddle, transform.position.z);
         play = false;
         speed = 0;
 
         lives = 3;
         looseLife = true;
+
+        lowRing = ringG.ringLow;
+        highRing = ringG.ringHigh;
+        rings = ringG.ringArray;
     }
 
     // Update is called once per frame
     void Update()
     {
         eventTrigger = popUp.eventTrigger;
-
+        
 
 
         if (play)
@@ -68,8 +74,14 @@ public class PlaneController : MonoBehaviour
                 targetRotation = Quaternion.Euler(45, 0, 0);
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
             }
+
+                mappedHeight = diveInput.Map(1, -1, lowRing, highRing);
             
-            transform.Translate(0f, 0f, speed, Space.Self);
+
+            Vector3 newPosition = new Vector3(transform.position.x, mappedHeight, transform.position.z);
+            transform.position = newPosition;
+
+            transform.Translate(0f, 0f, speed, Space.World);
 
 
             //Check type of ring and if player goes through
@@ -81,11 +93,13 @@ public class PlaneController : MonoBehaviour
                 if (distanceZ <= 200 & distanceZ >= -5)
                 {
                     //Check if high or low
-                    if (ring.transform.position.y > startPos.y + 5) {high = true; low = false; }
-                    else if (ring.transform.position.y < startPos.y - 5) { high = false; low = true; }
+                    if (ring.transform.position.y >= startPos.y + 5) {high = true; low = false; }
+                    else if (ring.transform.position.y <= startPos.y - 5) { high = false; low = true; }
                     else { high = false; low = false; }
 
                     Debug.Log("high = " + high + "    low = " + low);
+                    Debug.Log(distanceZ);
+                    Debug.Log(transform.position);
 
                 }
 

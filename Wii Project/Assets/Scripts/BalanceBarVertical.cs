@@ -74,7 +74,7 @@ public class BalanceBarVertical : MonoBehaviour
         else if (rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y + (barWidth / 2) - targetWidth && rtPosition.transform.position.y + positionBarWidth / 2 < startingPosition.y + (barWidth / 2) + 5)
         {
             // positionBar.GetComponentInChildren<Image>().color = Color.red;
-            errorTimer++;
+           // errorTimer++;
             // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
@@ -86,7 +86,7 @@ public class BalanceBarVertical : MonoBehaviour
         else if (rtPosition.transform.position.y - positionBarWidth / 2 < startingPosition.y - (barWidth / 2) + targetWidth && rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y - (barWidth / 2) - 5)
         {
             // positionBar.GetComponentInChildren<Image>().color = Color.red;
-            errorTimer++;
+           // errorTimer++;
             // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
@@ -112,7 +112,7 @@ public class BalanceBarVertical : MonoBehaviour
         {
             if (rtPosition.transform.position.y + positionBarWidth / 2 < startingPosition.y + (barWidth / 2) && rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y - barWidth / 2)
             {
-                rtPosition.transform.Translate(new Vector3(x * speed, 0f, 0f));
+                rtPosition.transform.Translate(new Vector3(-x * speed, 0f, 0f));
             }
             else if (rtPosition.transform.position.y + positionBarWidth / 2 >= startingPosition.y + (barWidth / 2))
             {
@@ -138,23 +138,23 @@ public class BalanceBarVertical : MonoBehaviour
     {
         if (plane.high && !plane.low)
         {
-            if (rtTarget.transform.position.y + targetWidth / 2 < startTarget.y + (barWidth/3) ) { 
-                rtTarget.transform.Translate(new Vector3(-speed/2, 0f, 0f));
+            if (rtTarget.transform.position.y - targetWidth / 2 > startTarget.y - (barWidth/2) ) { 
+                rtTarget.transform.Translate(new Vector3(speed, 0f, 0f));
             }
         } 
         else if (!plane.high && plane.low)
         {
-            if (rtTarget.transform.position.y - targetWidth / 2 > startTarget.y - (barWidth / 3))
+            if (rtTarget.transform.position.y + targetWidth / 2 < startTarget.y + (barWidth / 2))
             {
-                rtTarget.transform.Translate(new Vector3(speed/2, 0f, 0f));
+                rtTarget.transform.Translate(new Vector3(-speed, 0f, 0f));
             }
         }
         else if (!plane.high && !plane.low)
         {
             if (rtTarget.transform.position.y < startTarget.y)
-                rtTarget.transform.Translate(new Vector3(-1.3f * 2, 0f, 0f));
+                rtTarget.transform.Translate(new Vector3(-speed, 0f, 0f));
             if (rtTarget.transform.position.y > startTarget.y)
-                rtTarget.transform.Translate(new Vector3(1.3f * 2, 0f, 0f));
+                rtTarget.transform.Translate(new Vector3(speed, 0f, 0f));
         }
     }
 
