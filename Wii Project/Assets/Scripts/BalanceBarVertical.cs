@@ -19,6 +19,7 @@ public class BalanceBarVertical : MonoBehaviour
 
     private Vector3 startingPosition;
     private Vector3 targetPosition;
+    private Vector3 startTarget;
     [SerializeField] private float speed;
     private Vector3 moveDirection;
 
@@ -43,6 +44,7 @@ public class BalanceBarVertical : MonoBehaviour
 
         startingPosition = rtPosition.transform.position;
         targetPosition = rtTarget.transform.position;
+        startTarget = targetPosition;
 
         speed = 2f;
 
@@ -61,9 +63,10 @@ public class BalanceBarVertical : MonoBehaviour
     private void Update()
     {
         //rtPosition.transform.position = startingPosition + new Vector3(positionRef.transform.localPosition.x,0f,0f);
+        CheckTarget();
         MoveBar();
 
-        if (rtPosition.transform.position.y < targetPosition.y + (targetWidth / 2) && rtPosition.transform.position.y > targetPosition.y - (targetWidth / 2))
+        if (rtPosition.transform.position.y < rtTarget.transform.position.y + (targetWidth / 2) && rtPosition.transform.position.y > rtTarget.transform.position.y - (targetWidth / 2))
         {
             positionBar.GetComponentInChildren<Image>().color = Color.white;
 
@@ -128,6 +131,30 @@ public class BalanceBarVertical : MonoBehaviour
             if (rtPosition.transform.position.y > startingPosition.y)
                 rtPosition.transform.Translate(new Vector3(1.3f*2, 0f, 0f));
 
+        }
+    }
+
+    private void CheckTarget()
+    {
+        if (plane.high && !plane.low)
+        {
+            if (rtTarget.transform.position.y + targetWidth / 2 < startTarget.y + (barWidth/3) ) { 
+                rtTarget.transform.Translate(new Vector3(-speed/2, 0f, 0f));
+            }
+        } 
+        else if (!plane.high && plane.low)
+        {
+            if (rtTarget.transform.position.y - targetWidth / 2 > startTarget.y - (barWidth / 3))
+            {
+                rtTarget.transform.Translate(new Vector3(speed/2, 0f, 0f));
+            }
+        }
+        else if (!plane.high && !plane.low)
+        {
+            if (rtTarget.transform.position.y < startTarget.y)
+                rtTarget.transform.Translate(new Vector3(-1.3f * 2, 0f, 0f));
+            if (rtTarget.transform.position.y > startTarget.y)
+                rtTarget.transform.Translate(new Vector3(1.3f * 2, 0f, 0f));
         }
     }
 
