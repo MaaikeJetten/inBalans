@@ -6,7 +6,9 @@ public class PlaneController : MonoBehaviour
 {
     public float forwardSpeed;
     private float speed;
-    [SerializeField] private float diveSpeed; 
+    [SerializeField] private float diveSpeed;
+    [SerializeField] private float lowRing;
+    [SerializeField] private float highRing;
     private float diveInput;
     private Vector3 startPos;
     public bool play;
@@ -46,10 +48,6 @@ public class PlaneController : MonoBehaviour
         {
             
             diveInput = Input.GetAxisRaw("Vertical");
-            // Vector3 startPosition = transform.position;
-            //targetHigh = new Vector3(0f, 65, transform.position.z);
-
-            //Debug.Log(diveInput);
 
 
             if (diveInput == 0)
@@ -73,6 +71,8 @@ public class PlaneController : MonoBehaviour
             
             transform.Translate(0f, 0f, speed, Space.Self);
 
+
+            //Check type of ring and if player goes through
             foreach (GameObject ring in rings)
             {
                 float distanceZ = ring.transform.position.z - transform.position.z;
@@ -117,12 +117,31 @@ public class PlaneController : MonoBehaviour
 
             propellor.transform.Rotate(0f, -10f, 0f, Space.Self);
 
+            //Flying incorrectly
             if (transform.position.y <= 10 || transform.position.y >= 120 || lives == 0)
             {
+                Quaternion targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.0f);
                 popUp.failRestart.failureRestart = true;
                 speed = 0;
                 Pause();
                 //play = false;
+
+                //Reposition slightly to not immediately call failure again
+                if (transform.position.y <= 10)
+                {
+                    Vector3 restartPosition = new Vector3(transform.position.x, lowRing+15, transform.position.z);
+                    transform.position = restartPosition;
+                }
+                if (transform.position.y >= 120)
+                { 
+                    Vector3 restartPosition = new Vector3(transform.position.x, highRing-15, transform.position.z);
+                    transform.position = restartPosition;
+                }
+                if(lives == 0)
+                {
+                    lives = 3;
+                }
             }
 
 

@@ -5861,6 +5861,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 0.6
   diveSpeed: 100
+  lowRing: 30
+  highRing: 70
   play: 0
   popUp: {fileID: 1248115596}
   propellor: {fileID: 1580215799}
