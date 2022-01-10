@@ -2778,7 +2778,7 @@ GameObject:
   - component: {fileID: 1034708306}
   - component: {fileID: 1034708305}
   m_Layer: 5
-  m_Name: Standing video
+  m_Name: Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2823,7 +2823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 14fbe523137bcb24ba91b86234eb017d, type: 2}
+  m_Texture: {fileID: 8400000, guid: 257daf74ab232844cb2c439aa5f7f0b0, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3163,7 +3163,7 @@ GameObject:
   - component: {fileID: 1275797989}
   - component: {fileID: 1275797988}
   m_Layer: 0
-  m_Name: Video Player Standing
+  m_Name: Video Player Level 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3177,11 +3177,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275797987}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7499df808974ddc4193aa14ed0d318dc, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b0948eabde97ece4da96947cc3f5b241, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 14fbe523137bcb24ba91b86234eb017d, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 257daf74ab232844cb2c439aa5f7f0b0, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
@@ -3487,7 +3487,7 @@ GameObject:
   - component: {fileID: 1361265829}
   - component: {fileID: 1361265828}
   m_Layer: 5
-  m_Name: Standing video
+  m_Name: Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3532,7 +3532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 14fbe523137bcb24ba91b86234eb017d, type: 2}
+  m_Texture: {fileID: 8400000, guid: 257daf74ab232844cb2c439aa5f7f0b0, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5690,7 +5690,7 @@ GameObject:
   - component: {fileID: 2000447786}
   - component: {fileID: 2000447785}
   m_Layer: 5
-  m_Name: Standing video
+  m_Name: Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5735,7 +5735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 14fbe523137bcb24ba91b86234eb017d, type: 2}
+  m_Texture: {fileID: 8400000, guid: 257daf74ab232844cb2c439aa5f7f0b0, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
