@@ -4069,6 +4069,7 @@ GameObject:
   - component: {fileID: 1248115592}
   - component: {fileID: 1248115596}
   - component: {fileID: 1248115591}
+  - component: {fileID: 1248115597}
   m_Layer: 5
   m_Name: Overlay
   m_TagString: Untagged
@@ -4243,6 +4244,23 @@ MonoBehaviour:
   failRestart: {fileID: 807447195}
   eventTrigger: test
   plane: {fileID: 1646577916}
+--- !u!114 &1248115597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248115590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e45e227ef497a408c37516e9d87f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plane: {fileID: 1646577916}
+  hearts:
+  - {fileID: 315266535}
+  - {fileID: 1256824388}
+  - {fileID: 1504244499}
 --- !u!1 &1256824388
 GameObject:
   m_ObjectHideFlags: 0
