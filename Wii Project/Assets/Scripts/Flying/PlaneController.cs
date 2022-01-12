@@ -11,6 +11,7 @@ public class PlaneController : MonoBehaviour
     private float highRing;
     private float diveInput;
     private float mappedHeight;
+    [SerializeField] private float modelComp;
     private Vector3 startPos;
     [HideInInspector] public bool play;
     private string eventTrigger = "";
@@ -75,7 +76,7 @@ public class PlaneController : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
             }
 
-                mappedHeight = diveInput.Map(1, -1, lowRing, highRing);
+                mappedHeight = diveInput.Map(1, -1, lowRing-modelComp, highRing-modelComp);
             
 
             Vector3 newPosition = new Vector3(transform.position.x, mappedHeight, transform.position.z);
