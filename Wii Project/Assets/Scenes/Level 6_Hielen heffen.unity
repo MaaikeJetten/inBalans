@@ -3152,10 +3152,10 @@ MonoBehaviour:
   ringHigh: 0
   ringLow: 0
   ringMiddle: 65
-  heightDiff: 30
-  startZ: 200
+  heightDiff: 15
+  startZ: 150
   twoPositions: 1
-  distanceBetween: 200
+  distanceBetween: 150
   finalTerrain: {fileID: 1734873516}
   ringArray: []
   _ringPrefab: {fileID: 919132149155446097, guid: 340b088a7615ee94fab2c8efa69f5b8a, type: 3}
@@ -5603,6 +5603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardSpeed: 0.6
+  diveSpeed: 0.3
   modelComp: 0
   play: 0
   popUp: {fileID: 1248115596}

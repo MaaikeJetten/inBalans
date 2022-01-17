@@ -6,6 +6,7 @@ public class PlaneController : MonoBehaviour
 {
     public float forwardSpeed;
     private float speed;
+    public float diveSpeed;
     //[SerializeField] private float diveSpeed;
     private float lowRing;
     private float highRing;
@@ -32,7 +33,7 @@ public class PlaneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPos = new Vector3(transform.position.x, ringG.ringMiddle, transform.position.z);
+        startPos = new Vector3(transform.position.x, ringG.ringMiddle-3, transform.position.z);
         play = false;
         speed = 0;
 
@@ -58,31 +59,82 @@ public class PlaneController : MonoBehaviour
             Debug.Log(diveInput);
 
 
-            if (diveInput == 0)
+            if (diveInput < 0.5 && diveInput > -0.5)
             {
-                targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+                //Diving motion to center
+                if(transform.position.y > startPos.y)
+                {
+                    targetRotation = Quaternion.Euler(45, 0, 0);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+
+                    transform.Translate(new Vector3(0f, -diveSpeed, 0f), Space.World);
+                }
+
+                //Rising motion to center
+                if (transform.position.y < startPos.y)
+                {
+                    targetRotation = Quaternion.Euler(-45, 0, 0);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+
+                    transform.Translate(new Vector3(0f, diveSpeed, 0f), Space.World);
+                }
+
+                //Straighten out
+                if(transform.position.y == startPos.y)
+                {
+                    targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+                }
+                
 
             }
             //Rising
            else if (diveInput <= -0.7)
             {
-                targetRotation = Quaternion.Euler(-45, 0, 0);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+                if (transform.position.y < highRing - 5) 
+                { 
+                    targetRotation = Quaternion.Euler(-45, 0, 0);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+                }
+                else //Straighten out
+                {
+                    targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+                }
+
+                if(transform.position.y < highRing - 3)
+                {
+                    transform.Translate(new Vector3(0f, diveSpeed, 0f), Space.World);
+                }
+
+
             }
             //Diving
             else if (diveInput >= 0.7)
             {
-                targetRotation = Quaternion.Euler(45, 0, 0);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+                if (transform.position.y > lowRing + 5)
+                {
+                    targetRotation = Quaternion.Euler(45, 0, 0);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+                }
+                else //Straighten out
+                {
+                    targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
+                }
+
+                if (transform.position.y > lowRing - 3)
+                {
+                    transform.Translate(new Vector3(0f, -diveSpeed, 0f), Space.World);
+                }
             }
 
-            mappedHeight = diveInput.Map(1, -1, lowRing-modelComp, highRing-modelComp);
+           // mappedHeight = diveInput.Map(1, -1, lowRing-modelComp, highRing-modelComp);
            //    mappedHeight = 50;
             
 
-            Vector3 newPosition = new Vector3(transform.position.x, mappedHeight, transform.position.z);
-            transform.position = newPosition;
+            //Vector3 newPosition = new Vector3(transform.position.x, mappedHeight, transform.position.z);
+            //transform.position = newPosition;
 
             transform.Translate(0f, 0f, speed, Space.World);
 
@@ -93,7 +145,7 @@ public class PlaneController : MonoBehaviour
                 float distanceZ = ring.transform.position.z - transform.position.z;
                 float distanceY = ring.transform.position.y - transform.position.y;
 
-                if (distanceZ <= 200 & distanceZ >= -5)
+                if (distanceZ <= ringG.distanceBetween & distanceZ >= -5)
                 {
                     //Check if high or low
                     if (ring.transform.position.y >= startPos.y + 5) {high = true; low = false; }
@@ -110,11 +162,11 @@ public class PlaneController : MonoBehaviour
                 if (distanceZ <= 5 && distanceZ >= -5)
                 {
                     //Debug.Log(ring + "close by");
-                    if (distanceY <= ring.GetComponent<MeshRenderer>().bounds.size.x / 2 + 5 && distanceY >= -ring.GetComponent<MeshRenderer>().bounds.size.x / 2)
+                    if (distanceY <= ring.GetComponent<MeshRenderer>().bounds.size.x / 2 + 7 && distanceY >= -ring.GetComponent<MeshRenderer>().bounds.size.x / 2 - 7)
                     {
                         //Debug.Log("hit");
                     }
-                    else if (distanceY > ring.GetComponent<MeshRenderer>().bounds.size.x / 2 + 5 || distanceY < -ring.GetComponent<MeshRenderer>().bounds.size.x / 2)
+                    else if (distanceY > ring.GetComponent<MeshRenderer>().bounds.size.x / 2 + 7 || distanceY < -ring.GetComponent<MeshRenderer>().bounds.size.x / 2 - 7)
                     {
                         //Debug.Log("miss");
                         if (looseLife)

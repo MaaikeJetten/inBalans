@@ -10,7 +10,7 @@ public class RingGeneration : MonoBehaviour {
     [SerializeField] private float heightDiff;
     [SerializeField] private float startZ;
     public bool twoPositions;
-    [SerializeField] private float distanceBetween;
+    public float distanceBetween;
     private float distanceLevel;
     public Terrain finalTerrain;
 
