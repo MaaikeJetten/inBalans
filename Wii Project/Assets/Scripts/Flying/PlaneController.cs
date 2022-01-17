@@ -55,6 +55,7 @@ public class PlaneController : MonoBehaviour
         {
             
             diveInput = Input.GetAxisRaw("Vertical");
+            Debug.Log(diveInput);
 
 
             if (diveInput == 0)
@@ -76,7 +77,8 @@ public class PlaneController : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 2);
             }
 
-                mappedHeight = diveInput.Map(1, -1, lowRing-modelComp, highRing-modelComp);
+            mappedHeight = diveInput.Map(1, -1, lowRing-modelComp, highRing-modelComp);
+           //    mappedHeight = 50;
             
 
             Vector3 newPosition = new Vector3(transform.position.x, mappedHeight, transform.position.z);
@@ -98,9 +100,9 @@ public class PlaneController : MonoBehaviour
                     else if (ring.transform.position.y <= startPos.y - 5) { high = false; low = true; }
                     else { high = false; low = false; }
 
-                    Debug.Log("high = " + high + "    low = " + low);
-                    Debug.Log(distanceZ);
-                    Debug.Log(transform.position);
+                   // Debug.Log("high = " + high + "    low = " + low);
+                  //  Debug.Log(distanceZ);
+                   // Debug.Log(transform.position);
 
                 }
 

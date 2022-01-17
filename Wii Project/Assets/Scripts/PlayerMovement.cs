@@ -36,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-       // Debug.Log("Horizontal = " + x);
-      //  Debug.Log("Vertical = " + y );
+       Debug.Log("Horizontal = " + x);
+        Debug.Log("Vertical = " + y );
 
         moveDirection = new Vector3(x, y, 0);
         moveDirection *= moveSpeed * 1.5f;
