@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 6_Hielen heffen.unity
     guid: ab35f1ec61d33e04b905d3df8c62c6aa
+  - enabled: 1
+    path: Assets/Scenes/Level 7_Hielen tenen heffen.unity
+    guid: 88fa93e3aa7c2d7468d41e02e069652b
   m_configObjects: {}
