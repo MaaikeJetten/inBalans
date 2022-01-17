@@ -20,5 +20,15 @@ public class MoveSpeed : MonoBehaviour
     {
         player.moveSpeed = speed;
         speedText.text = speed.ToString("0.00");
+
+        if (Input.GetKeyDown("k") && speed >= 0.05f && speed <= 0.20f)
+        {
+            speed -= 0.01f;
+        }
+
+        if (Input.GetKeyDown("l") && speed >= 0.05f && speed <= 0.20f)
+        {
+            speed += 0.01f;
+        }
     }
 }
