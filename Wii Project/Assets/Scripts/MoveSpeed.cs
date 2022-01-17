@@ -7,20 +7,18 @@ public class MoveSpeed : MonoBehaviour
 {
     public PlayerMovement player;
     private float speed = 0.15f;
-    public Text speedText = "0.15";
-    private string moveSpeedText;
+    public Text speedText;
 
     // Start is called before the first frame update
     void Start()
     {
-        player.moveSpeed = speed;
-        moveSpeedText = speed.ToString("0.00");
-        speedText.text = moveSpeedText;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        player.moveSpeed = speed;
+        speedText.text = speed.ToString("0.00");
     }
 }
