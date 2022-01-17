@@ -9,15 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: bef7f91873b09e9419b142b75bb1c1a7
   - enabled: 1
-    path: Assets/Scenes/Level 2_Staan.unity
-    guid: edd08a6cb145771498b8a9be4658a542
-  - enabled: 1
     path: Assets/Scenes/Level 1_Staan.unity
     guid: fa64bcd3b3b3cb141b11812b7cd0ad4e
+  - enabled: 1
+    path: Assets/Scenes/Level 2_Staan.unity
+    guid: edd08a6cb145771498b8a9be4658a542
   - enabled: 1
     path: Assets/Scenes/Level 3_Staan.unity
     guid: 4548b0af56599ce4d9871c9e23f13dd2
   - enabled: 1
     path: Assets/Scenes/Level 6_Hielen heffen.unity
     guid: ab35f1ec61d33e04b905d3df8c62c6aa
+  - enabled: 1
+    path: Assets/Scenes/Level 7_Hielen tenen heffen.unity
+    guid: 88fa93e3aa7c2d7468d41e02e069652b
+  - enabled: 1
+    path: Assets/Scenes/Level 8_Hielen heffen.unity
+    guid: 2b8f2110842b0fe4abebfc70d24dd6a9
   m_configObjects: {}

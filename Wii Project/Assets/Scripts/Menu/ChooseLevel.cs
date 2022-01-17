@@ -15,6 +15,8 @@ public class ChooseLevel : MonoBehaviour
         scene[1].onClick.AddListener(Load2);
         scene[2].onClick.AddListener(Load3);
         scene[3].onClick.AddListener(Load6);
+        scene[4].onClick.AddListener(Load7);
+        scene[5].onClick.AddListener(Load8);
     }
 
     // Update is called once per frame
@@ -34,5 +36,13 @@ public class ChooseLevel : MonoBehaviour
     void Load6()
     {
         SceneManager.LoadScene(sceneName: "Level 6_Hielen heffen");
+    }
+    void Load7()
+    {
+        SceneManager.LoadScene(sceneName: "Level 7_Hielen tenen heffen");
+    }
+    void Load8()
+    {
+        SceneManager.LoadScene(sceneName: "Level 8_Hielen heffen");
     }
 }

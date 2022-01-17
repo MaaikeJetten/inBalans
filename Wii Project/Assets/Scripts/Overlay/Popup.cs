@@ -197,6 +197,12 @@ public class Popup : MonoBehaviour
                 SceneManager.LoadScene(sceneName: "Level 6_Hielen heffen");
                 break;
             case "Level 6_Hielen heffen":
+                SceneManager.LoadScene(sceneName: "Level 7_Hielen tenen heffen");
+                break;
+            case "Level 7_Hielen tenen heffen":
+                SceneManager.LoadScene(sceneName: "Level 8_Hielen heffen");
+                break;
+            case "Level 8_Hielen heffen":
                 SceneManager.LoadScene(sceneName: "Menu");
                 break;
             default:

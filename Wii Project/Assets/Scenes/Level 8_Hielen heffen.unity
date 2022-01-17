@@ -724,7 +724,7 @@ Terrain:
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -1331,7 +1331,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Om de beurt hielen en tenen heffen
 
-    Handen licht gesteund'
+    Handen los'
 --- !u!222 &480425760
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1472,7 +1472,7 @@ Terrain:
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -1842,7 +1842,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Oefening 6 / 17
+  m_Text: Oefening 8 / 17
 --- !u!222 &632937236
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2306,7 +2306,7 @@ Terrain:
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -3301,7 +3301,7 @@ Terrain:
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -4200,7 +4200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 1fcab257d327940449fc07881fdd7d89, type: 2}
+  m_Texture: {fileID: 8400000, guid: 84c5ecdfff622494cac9cfc7c44b17a4, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4357,7 +4357,7 @@ Terrain:
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -4565,7 +4565,7 @@ Terrain:
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -4660,7 +4660,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Om de beurt hielen en tenen heffen
 
-    Handen licht gesteund'
+    Handen los'
 --- !u!222 &1352895777
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4680,7 +4680,7 @@ GameObject:
   - component: {fileID: 1398164153}
   - component: {fileID: 1398164152}
   m_Layer: 0
-  m_Name: Video Player Level 6
+  m_Name: Video Player Level 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4694,11 +4694,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398164151}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: eb5f0f3f349079f4086598d08e19f11b, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 0f530867933a7d241974c460c312ffe8, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 1fcab257d327940449fc07881fdd7d89, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 84c5ecdfff622494cac9cfc7c44b17a4, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
@@ -4924,7 +4924,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 1fcab257d327940449fc07881fdd7d89, type: 2}
+  m_Texture: {fileID: 8400000, guid: 84c5ecdfff622494cac9cfc7c44b17a4, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4996,7 +4996,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 1fcab257d327940449fc07881fdd7d89, type: 2}
+  m_Texture: {fileID: 8400000, guid: 84c5ecdfff622494cac9cfc7c44b17a4, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5188,7 +5188,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Om de beurt hielen en tenen heffen
 
-    Handen licht gesteund'
+    Handen los'
 --- !u!222 &1555597736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5409,7 +5409,7 @@ Terrain:
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -5603,6 +5603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardSpeed: 0.6
+  modelComp: 0
   play: 0
   popUp: {fileID: 1248115596}
   propellor: {fileID: 1580215799}
@@ -5956,7 +5957,7 @@ Terrain:
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
