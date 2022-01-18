@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: d56bfb59ca7eab64eb29ce3acbddd2c6, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: ebf66279cab944747aa2608a92762bf7, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -7266,6 +7266,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 180361885529677222, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cdb074d7f44a9824daed5225cf991f14, type: 2}
+    - target: {fileID: 180361885791783214, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cdb074d7f44a9824daed5225cf991f14, type: 2}
+    - target: {fileID: 676588882667111286, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cdb074d7f44a9824daed5225cf991f14, type: 2}
+    - target: {fileID: 676588882929489918, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 974b815b7b63c2240ae06f7cb121df68, type: 2}
+    - target: {fileID: 5785581887440553922, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1a83130405ef29c4d9e1fa184b420cbb, type: 2}
+    - target: {fileID: 6605083274484783378, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1a83130405ef29c4d9e1fa184b420cbb, type: 2}
     - target: {fileID: 6729750979997991213, guid: 74a34dae13a3967439e94cc2a4ffea31, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00645
