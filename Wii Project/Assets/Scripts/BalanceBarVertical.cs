@@ -8,13 +8,12 @@ public class BalanceBarVertical : MonoBehaviour
     public GameObject targetSection;
     public GameObject bar;
     public GameObject positionBar;
-    // public Boat boat;
     public PlaneController plane;
 
 
-    private RectTransform rtBar;
-    private RectTransform rtPosition;
-    private RectTransform rtTarget;
+    private RectTransform rtBar; //full size of bar
+    private RectTransform rtPosition; //current position bar 
+    private RectTransform rtTarget; //target bar
 
 
     private Vector3 startingPosition;
@@ -23,7 +22,7 @@ public class BalanceBarVertical : MonoBehaviour
     [SerializeField] private float speed;
     private Vector3 moveDirection;
 
-    private float barWidth;
+    private float barWidth; 
     private float positionBarWidth;
     private float targetWidth;
 
@@ -36,11 +35,10 @@ public class BalanceBarVertical : MonoBehaviour
 
     private void Start()
     {
+        //get components
         rtBar = bar.transform.GetComponent<RectTransform>();
         rtPosition = positionBar.transform.GetComponent<RectTransform>();
         rtTarget = targetSection.transform.GetComponent<RectTransform>();
-
-
 
         startingPosition = rtPosition.transform.position;
         targetPosition = rtTarget.transform.position;
@@ -48,13 +46,13 @@ public class BalanceBarVertical : MonoBehaviour
 
         speed = 2f;
 
+        //get correct sizes
         barWidth = rtBar.sizeDelta.x;
         positionBarWidth = rtPosition.sizeDelta.x;
         targetWidth = rtTarget.sizeDelta.x;
 
         positionBar.GetComponent<Image>().material.SetColor("_Color", Color.white);
 
-        //green = new Color(0.012f, 0.807f, 0.643f);
         green = new Color(0.157f, 0.4f, 0.431f);
 
         errorTimer = 0;
@@ -62,20 +60,19 @@ public class BalanceBarVertical : MonoBehaviour
 
     private void Update()
     {
-        //rtPosition.transform.position = startingPosition + new Vector3(positionRef.transform.localPosition.x,0f,0f);
-        CheckTarget();
+        CheckTarget(); //check position of upcoming ring
         MoveBar();
 
+        //if position bar is within the target bar, the position bar is white
         if (rtPosition.transform.position.y < rtTarget.transform.position.y + (targetWidth / 2) && rtPosition.transform.position.y > rtTarget.transform.position.y - (targetWidth / 2))
         {
             positionBar.GetComponentInChildren<Image>().color = Color.white;
 
         }
+
+        //if position bar is at the ends of the larger bar a.k.a far from the target in a wrong position a timer starts
         else if (rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y + (barWidth / 2) - targetWidth && rtPosition.transform.position.y + positionBarWidth / 2 < startingPosition.y + (barWidth / 2) + 5)
         {
-            // positionBar.GetComponentInChildren<Image>().color = Color.red;
-           // errorTimer++;
-            // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
             {
@@ -85,9 +82,6 @@ public class BalanceBarVertical : MonoBehaviour
         }
         else if (rtPosition.transform.position.y - positionBarWidth / 2 < startingPosition.y - (barWidth / 2) + targetWidth && rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y - (barWidth / 2) - 5)
         {
-            // positionBar.GetComponentInChildren<Image>().color = Color.red;
-           // errorTimer++;
-            // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
             {
@@ -95,12 +89,11 @@ public class BalanceBarVertical : MonoBehaviour
                 errorTimer = 0;
             }
         }
-        else
+        else //if position bar is not in the target, the position bar is green
         {
             positionBar.GetComponentInChildren<Image>().color = green;
             errorTimer = 0;
         }
-        //Debug.Log(rtPosition.transform.position);
 
     }
 
@@ -110,10 +103,12 @@ public class BalanceBarVertical : MonoBehaviour
 
         if (x != 0)
         {
+            //move position bar according to player input
             if (rtPosition.transform.position.y + positionBarWidth / 2 < startingPosition.y + (barWidth / 2) && rtPosition.transform.position.y - positionBarWidth / 2 > startingPosition.y - barWidth / 2)
             {
                 rtPosition.transform.Translate(new Vector3(-x * speed, 0f, 0f));
             }
+            //position bar is limited to the bounds of the overall bar
             else if (rtPosition.transform.position.y + positionBarWidth / 2 >= startingPosition.y + (barWidth / 2))
             {
                 rtPosition.transform.Translate(new Vector3(-.001f, 0f, 0f));
@@ -124,6 +119,7 @@ public class BalanceBarVertical : MonoBehaviour
             }
         }
 
+        //return position bar to the center without player input
         if (x == 0)
         {
             if (rtPosition.transform.position.y < startingPosition.y)
@@ -134,7 +130,7 @@ public class BalanceBarVertical : MonoBehaviour
         }
     }
 
-    private void CheckTarget()
+    private void CheckTarget() //Check which ring is coming up next and move target to corresponding position
     {
         if (plane.high && !plane.low)
         {

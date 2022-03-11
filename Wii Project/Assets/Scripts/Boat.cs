@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Keep in mind: the script is called Boat but is actually applied to the worldplane object
 public class Boat : MonoBehaviour
 {
     private Vector3 moveDelta;
@@ -16,7 +17,6 @@ public class Boat : MonoBehaviour
     private string eventTrigger = "";
 
     public Popup popUp;
-    //private float cooldownTime = 3f;
 
     private Vector3 positionStart;
     private Vector3[] positions; 
@@ -25,6 +25,7 @@ public class Boat : MonoBehaviour
 
     void Start()
     {
+        //check size worldplane mesh
         renderer = GetComponent<MeshRenderer>();
         size = renderer.bounds.size;
         moveSpeed = (size.z + 100) / (duration);
@@ -33,6 +34,7 @@ public class Boat : MonoBehaviour
         positionStart = transform.position;
         play = false;
 
+        //save original positions all objects to reset correctly
         positions = new Vector3[worldObjects.Length];
 
         for (int i = 0; i < worldObjects.Length; i++)
@@ -58,6 +60,7 @@ public class Boat : MonoBehaviour
 
         if (play)
         {
+            //Move everything as long as the character is not yet at the end
             if ((size.z / 2) > (transform.position.z * -1))
             {
                 transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
@@ -67,7 +70,6 @@ public class Boat : MonoBehaviour
                     GameObject gObject = worldObjects[i];
                     gObject.transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
 
-                    //Debug.Log(positions[i]);
                 }
             }
         }

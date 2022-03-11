@@ -9,12 +9,11 @@ public class BalanceBar : MonoBehaviour
     public GameObject bar;
     public GameObject positionBar;
     public Boat boat;
-   // public PlaneController plane;
 
 
-    private RectTransform rtBar;
-    private RectTransform rtPosition;
-    private RectTransform rtTarget;
+    private RectTransform rtBar; //full size of bar
+    private RectTransform rtPosition; //current position bar
+    private RectTransform rtTarget; //target bar
 
 
     private Vector3 startingPosition;
@@ -35,6 +34,7 @@ public class BalanceBar : MonoBehaviour
 
     private void Start()
     {
+        //get components
         rtBar = bar.transform.GetComponent<RectTransform>();
         rtPosition = positionBar.transform.GetComponent<RectTransform>();
         rtTarget = targetSection.transform.GetComponent<RectTransform>();
@@ -46,13 +46,13 @@ public class BalanceBar : MonoBehaviour
 
         speed = 2f;
 
+        //get correct sizes
         barWidth = rtBar.sizeDelta.x;
         positionBarWidth = rtPosition.sizeDelta.x;
         targetWidth = rtTarget.sizeDelta.x;
 
         positionBar.GetComponent<Image>().material.SetColor("_Color", Color.white);
 
-        //green = new Color(0.012f, 0.807f, 0.643f);
         green = new Color(0.157f, 0.4f, 0.431f);
 
         errorTimer = 0;
@@ -60,19 +60,18 @@ public class BalanceBar : MonoBehaviour
 
     private void Update()
     {
-        //rtPosition.transform.position = startingPosition + new Vector3(positionRef.transform.localPosition.x,0f,0f);
         MoveBar();
 
+        //if position bar is within the target bar, the position bar is white
         if (rtPosition.transform.position.x < targetPosition.x + (targetWidth / 2) && rtPosition.transform.position.x > targetPosition.x - (targetWidth / 2))
         {
             positionBar.GetComponentInChildren<Image>().color = Color.white;
 
         }
+        //if position bar is at the ends of the larger bar a.k.a far from the target in a wrong position a timer starts
         else if (rtPosition.transform.position.x - positionBarWidth/2 > startingPosition.x + (barWidth /2) - targetWidth && rtPosition.transform.position.x + positionBarWidth / 2 < startingPosition.x + (barWidth / 2) + 5)
         {
-           // positionBar.GetComponentInChildren<Image>().color = Color.red;
             errorTimer++;
-           // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
             {
@@ -82,9 +81,7 @@ public class BalanceBar : MonoBehaviour
         }
         else if (rtPosition.transform.position.x - positionBarWidth / 2 < startingPosition.x - (barWidth / 2) + targetWidth && rtPosition.transform.position.x - positionBarWidth / 2 > startingPosition.x - (barWidth / 2) - 5)
         {
-           // positionBar.GetComponentInChildren<Image>().color = Color.red;
             errorTimer++;
-           // Debug.Log(errorTimer);
 
             if (errorTimer * Time.deltaTime >= timer)
             {
@@ -92,7 +89,7 @@ public class BalanceBar : MonoBehaviour
                 errorTimer = 0;
             }
         }
-        else
+        else //if position bar is not in the target, the position bar is green
         {
             positionBar.GetComponentInChildren<Image>().color = green;
             errorTimer = 0;
@@ -107,10 +104,12 @@ public class BalanceBar : MonoBehaviour
 
         if (x != 0)
         {
+            //move position bar according to player input --> THIS SHOULD BE MORE SENSITIVE
             if (rtPosition.transform.position.x + positionBarWidth / 2 < startingPosition.x + (barWidth / 2) && rtPosition.transform.position.x - positionBarWidth / 2 > startingPosition.x - barWidth / 2)
             {
                 rtPosition.transform.Translate(new Vector3(x*speed, 0f, 0f));
             }
+            //position bar is limited to the bounds of the overall bar
             else if (rtPosition.transform.position.x + positionBarWidth / 2 >= startingPosition.x + (barWidth / 2))
             {
                 rtPosition.transform.Translate(new Vector3(-.1f, 0f, 0f));
@@ -121,6 +120,7 @@ public class BalanceBar : MonoBehaviour
             }
         }
 
+        //return position bar to the center without player input
         if (x == 0)
         {
             if (rtPosition.transform.position.x > startingPosition.x)

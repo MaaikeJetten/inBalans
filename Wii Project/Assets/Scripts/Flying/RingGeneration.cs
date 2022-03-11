@@ -9,7 +9,7 @@ public class RingGeneration : MonoBehaviour {
     public float ringMiddle;
     [SerializeField] private float heightDiff;
     [SerializeField] private float startZ;
-    public bool twoPositions;
+    public bool twoPositions; //different for level 6 (true) or 7 and 8 (false)
     public float distanceBetween;
     private float distanceLevel;
     public Terrain finalTerrain;
@@ -32,11 +32,14 @@ public class RingGeneration : MonoBehaviour {
         //starting in the middle going high
         ringPosThreeHigh = false;
         ringPosThreeLow = false;
+
+        //get terrain data
         posTerrain = finalTerrain.transform.position.z;
         sizeTerrain = finalTerrain.terrainData.size.z;
         distanceLevel = posTerrain + sizeTerrain;
-        numRings = Mathf.RoundToInt(distanceLevel / distanceBetween);
+        numRings = Mathf.RoundToInt(distanceLevel / distanceBetween); //calculate how many rings needed
 
+        //correct ring positions
         ringHigh = ringMiddle + heightDiff;
         ringLow = ringMiddle - heightDiff;
 
@@ -98,7 +101,6 @@ public class RingGeneration : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(ringArray.Length);
 
 
     }

@@ -16,6 +16,7 @@ public class HeartLives : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //set icons of hearts to current lives
         switch (plane.lives) {
             case 0:
                 hearts[0].SetActive(false);

@@ -1,17 +1,12 @@
 using UnityEngine;
 
+//Player movement script for the balancing left-right movement on the boat
 public class PlayerMovement : MonoBehaviour
 {
     //VARIABLES
     [SerializeField] public float moveSpeed;
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
 
     private Vector3 moveDirection;
-
-    private float prevX;
-    private float prevY;
-    private float timerX;
 
     private Vector3 forwardRelativeToSurfaceNormal;//For Look Rotation
 
@@ -22,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        prevX = 0;
-        prevY = 0; 
     }
 
     private void Update()
@@ -36,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-       Debug.Log("Horizontal = " + x);
+        Debug.Log("Horizontal = " + x);
         Debug.Log("Vertical = " + y );
 
         moveDirection = new Vector3(x, y, 0);
@@ -83,10 +76,6 @@ public class PlayerMovement : MonoBehaviour
             CharacterStandStraight();
            
         }
-
-        prevX = x;
-        prevY = y; 
-        //Debug.Log(transform.localEulerAngles);
 
     }
 

@@ -7,12 +7,9 @@ public class PlaneController : MonoBehaviour
     public float forwardSpeed;
     private float speed;
     public float diveSpeed;
-    //[SerializeField] private float diveSpeed;
     private float lowRing;
     private float highRing;
     private float diveInput;
-    private float mappedHeight;
-    [SerializeField] private float modelComp;
     private Vector3 startPos;
     [HideInInspector] public bool play;
     private string eventTrigger = "";
@@ -38,8 +35,9 @@ public class PlaneController : MonoBehaviour
         speed = 0;
 
         lives = 3;
-        looseLife = true;
+        looseLife = true;  //player able to loose lives
 
+        //assign ring values
         lowRing = ringG.ringLow;
         highRing = ringG.ringHigh;
         rings = ringG.ringArray;
@@ -50,15 +48,12 @@ public class PlaneController : MonoBehaviour
     {
         eventTrigger = popUp.eventTrigger;
         
-
-
         if (play)
         {
             
             diveInput = Input.GetAxisRaw("Vertical");
-            Debug.Log(diveInput);
 
-
+            //No specific input
             if (diveInput < 0.5 && diveInput > -0.5)
             {
                 //Diving motion to center
@@ -91,6 +86,7 @@ public class PlaneController : MonoBehaviour
             //Rising
            else if (diveInput <= -0.7)
             {
+                //turn plane
                 if (transform.position.y < highRing - 5) 
                 { 
                     targetRotation = Quaternion.Euler(-45, 0, 0);
@@ -112,6 +108,7 @@ public class PlaneController : MonoBehaviour
             //Diving
             else if (diveInput >= 0.7)
             {
+                //turn plane
                 if (transform.position.y > lowRing + 5)
                 {
                     targetRotation = Quaternion.Euler(45, 0, 0);
@@ -129,13 +126,6 @@ public class PlaneController : MonoBehaviour
                 }
             }
 
-           // mappedHeight = diveInput.Map(1, -1, lowRing-modelComp, highRing-modelComp);
-           //    mappedHeight = 50;
-            
-
-            //Vector3 newPosition = new Vector3(transform.position.x, mappedHeight, transform.position.z);
-            //transform.position = newPosition;
-
             transform.Translate(0f, 0f, speed, Space.World);
 
 
@@ -152,10 +142,6 @@ public class PlaneController : MonoBehaviour
                     else if (ring.transform.position.y <= startPos.y - 5) { high = false; low = true; }
                     else { high = false; low = false; }
 
-                   // Debug.Log("high = " + high + "    low = " + low);
-                  //  Debug.Log(distanceZ);
-                   // Debug.Log(transform.position);
-
                 }
 
                 //Check if plane close to ring
@@ -164,11 +150,11 @@ public class PlaneController : MonoBehaviour
                     //Debug.Log(ring + "close by");
                     if (distanceY <= ring.GetComponent<MeshRenderer>().bounds.size.x / 2 + 7 && distanceY >= -ring.GetComponent<MeshRenderer>().bounds.size.x / 2 - 7)
                     {
-                        //Debug.Log("hit");
+                        //Plane passes through ring
                     }
                     else if (distanceY > ring.GetComponent<MeshRenderer>().bounds.size.x / 2 + 7 || distanceY < -ring.GetComponent<MeshRenderer>().bounds.size.x / 2 - 7)
                     {
-                        //Debug.Log("miss");
+                        //Plane misses ring
                         if (looseLife)
                         {
                             looseLife = false;
@@ -178,7 +164,8 @@ public class PlaneController : MonoBehaviour
 
                     }
                 }
-                else if (distanceZ < -10 && distanceZ > -20) looseLife = true;
+
+                else if (distanceZ < -10 && distanceZ > -20) looseLife = true; //player can loose lives again
 
                
             }
@@ -187,26 +174,12 @@ public class PlaneController : MonoBehaviour
             propellor.transform.Rotate(0f, -10f, 0f, Space.Self);
 
             //Flying incorrectly
-            if (transform.position.y <= 10 || transform.position.y >= 120 || lives == 0)
+            if (lives == 0)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(forwardRelativeToSurfaceNormal, Vector3.up); //check For target Rotation.
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.0f);
                 popUp.failRestart.failureRestart = true;
                 speed = 0;
                 Pause();
-                //play = false;
 
-                //Reposition slightly to not immediately call failure again
-                if (transform.position.y <= 10)
-                {
-                    Vector3 restartPosition = new Vector3(transform.position.x, lowRing+15, transform.position.z);
-                    transform.position = restartPosition;
-                }
-                if (transform.position.y >= 120)
-                { 
-                    Vector3 restartPosition = new Vector3(transform.position.x, highRing-15, transform.position.z);
-                    transform.position = restartPosition;
-                }
                 if(lives == 0)
                 {
                     lives = 3;

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Look at plane script
 public class CameraController : MonoBehaviour
 {
     public GameObject plane;
