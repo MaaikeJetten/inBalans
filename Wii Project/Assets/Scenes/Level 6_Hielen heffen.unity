@@ -667,7 +667,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3116,7 +3116,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3903,26 +3903,17 @@ MonoBehaviour:
   failure: {fileID: 818496260}
   backButton: {fileID: 1177658530}
   beginButton: {fileID: 1158726419}
-  pauseButton: {fileID: 1326811695}
   doorgaanButton: {fileID: 404771106}
   volgendeButton: {fileID: 238045730}
-  restartButton: {fileID: 2044660217}
   volgendeButton2: {fileID: 560811345}
   negerenButton: {fileID: 1702194965}
   opnieuwButton: {fileID: 7046944}
+  pauseButton: {fileID: 1326811695}
+  restartButton: {fileID: 2044660217}
   timeLeftMin: 2
   timeLeftSec: 0
   countdown: {fileID: 135009924}
   timeFill: {fileID: 1297083239}
-  countdownBool: f
-  countdownBeginMax: 10
-  countdownRestartMax: 10
-  beginFill: {fileID: 1688939782}
-  beginSlider: {fileID: 1688939780}
-  volgendeFill: {fileID: 247542642}
-  volgendeSlider: {fileID: 247542640}
-  opnieuwFill: {fileID: 1024786308}
-  opnieuwSlider: {fileID: 1024786306}
   failRestart: {fileID: 0}
   eventTrigger: test
   boat: {fileID: 0}
@@ -4028,26 +4019,17 @@ MonoBehaviour:
   failure: {fileID: 818496260}
   backButton: {fileID: 1177658530}
   beginButton: {fileID: 1158726419}
-  pauseButton: {fileID: 1326811695}
   doorgaanButton: {fileID: 404771106}
   volgendeButton: {fileID: 238045730}
-  restartButton: {fileID: 2044660217}
   volgendeButton2: {fileID: 560811345}
   negerenButton: {fileID: 1702194965}
   opnieuwButton: {fileID: 7046944}
+  pauseButton: {fileID: 1326811695}
+  restartButton: {fileID: 2044660217}
   timeLeftMin: 2
   timeLeftSec: 0
   countdown: {fileID: 135009924}
   timeFill: {fileID: 1297083239}
-  countdownBool: f
-  countdownBeginMax: 10
-  countdownRestartMax: 10
-  beginFill: {fileID: 1688939782}
-  beginSlider: {fileID: 1688939780}
-  volgendeFill: {fileID: 247542642}
-  volgendeSlider: {fileID: 247542640}
-  opnieuwFill: {fileID: 1024786308}
-  opnieuwSlider: {fileID: 1024786306}
   failRestart: {fileID: 807447195}
   eventTrigger: test
   plane: {fileID: 1646577916}
@@ -5767,7 +5749,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.551
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

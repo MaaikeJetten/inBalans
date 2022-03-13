@@ -5,23 +5,19 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public GameObject start;
-    public GameObject select;
-    public Button startButton;
+    //script for "menu" scene
 
-    public Button trainingButton;
-    public Button losseButton;
+    public GameObject start; //start screen
+    public GameObject select; //select level screen
+    public Button startButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        start.SetActive(true);
+        start.SetActive(true); //start screen is shown when the "menu" scene is loaded
         select.SetActive(false);
 
-        startButton.onClick.AddListener(TaskOnClick);
-
-        trainingButton.onClick.AddListener(TrainingMode);
-        losseButton.onClick.AddListener(LosseMode);
+        startButton.onClick.AddListener(TaskOnClick); //when start is clicked, the select level screen is shown
     }
 
     // Update is called once per frame
@@ -33,14 +29,5 @@ public class Menu : MonoBehaviour
     void TaskOnClick() {
         start.SetActive(false);
         select.SetActive(true);
-        trainingButton.Select();
-    }
-
-    void TrainingMode() {
-        trainingButton.Select();
-    }
-
-    void LosseMode() {
-        losseButton.Select();
     }
 }

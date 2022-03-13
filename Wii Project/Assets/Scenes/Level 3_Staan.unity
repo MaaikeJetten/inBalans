@@ -162,26 +162,17 @@ MonoBehaviour:
   failure: {fileID: 592833953}
   backButton: {fileID: 872532577}
   beginButton: {fileID: 422695372}
-  pauseButton: {fileID: 1771350623}
   doorgaanButton: {fileID: 639761757}
   volgendeButton: {fileID: 2145833642}
-  restartButton: {fileID: 1199557839}
   volgendeButton2: {fileID: 1747814476}
   negerenButton: {fileID: 1446458422}
   opnieuwButton: {fileID: 1020388714}
+  pauseButton: {fileID: 1771350623}
+  restartButton: {fileID: 1199557839}
   timeLeftMin: 2
   timeLeftSec: 0
   countdown: {fileID: 359051628}
   timeFill: {fileID: 196422348}
-  countdownBool: f
-  countdownBeginMax: 10
-  countdownRestartMax: 10
-  beginFill: {fileID: 1169416842}
-  beginSlider: {fileID: 1169416840}
-  volgendeFill: {fileID: 419828421}
-  volgendeSlider: {fileID: 419828419}
-  opnieuwFill: {fileID: 1892637359}
-  opnieuwSlider: {fileID: 1892637357}
   failRestart: {fileID: 2054952592}
   eventTrigger: test
   boat: {fileID: 329508051}
@@ -1092,7 +1083,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3940,7 +3931,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.551
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6185,7 +6176,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

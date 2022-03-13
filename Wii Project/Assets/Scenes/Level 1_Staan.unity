@@ -2784,7 +2784,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.551
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3596,26 +3596,17 @@ MonoBehaviour:
   failure: {fileID: 527525828}
   backButton: {fileID: 304788354}
   beginButton: {fileID: 1750189904}
-  pauseButton: {fileID: 971901337}
   doorgaanButton: {fileID: 883732786}
   volgendeButton: {fileID: 355956393}
-  restartButton: {fileID: 1530605406}
   volgendeButton2: {fileID: 321828353}
   negerenButton: {fileID: 637948428}
   opnieuwButton: {fileID: 2053978899}
+  pauseButton: {fileID: 971901337}
+  restartButton: {fileID: 1530605406}
   timeLeftMin: 2
   timeLeftSec: 0
   countdown: {fileID: 1013618004}
   timeFill: {fileID: 1222878116}
-  countdownBool: f
-  countdownBeginMax: 5
-  countdownRestartMax: 5
-  beginFill: {fileID: 655567431}
-  beginSlider: {fileID: 655567429}
-  volgendeFill: {fileID: 1809140686}
-  volgendeSlider: {fileID: 1809140684}
-  opnieuwFill: {fileID: 1205285988}
-  opnieuwSlider: {fileID: 1205285986}
   failRestart: {fileID: 192717089}
   eventTrigger: test
   boat: {fileID: 329508051}
@@ -4191,7 +4182,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4555,8 +4546,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.15
-  walkSpeed: 0
-  runSpeed: 0
 --- !u!143 &1306688978
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5739,7 +5728,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

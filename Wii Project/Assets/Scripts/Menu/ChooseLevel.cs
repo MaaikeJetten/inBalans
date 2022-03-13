@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class ChooseLevel : MonoBehaviour
 {
-    public Button[] scene;
+    //script for loading different scenes in "menu" scene
+
+    public Button[] scene; //button array for the level buttons
 
     // Start is called before the first frame update
     void Start()
     {
+        //if a button for a level is clicked, the right scene is loaded
         scene[0].onClick.AddListener(Load1);
         scene[1].onClick.AddListener(Load2);
         scene[2].onClick.AddListener(Load3);
